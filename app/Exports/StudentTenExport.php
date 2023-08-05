@@ -38,13 +38,10 @@ class StudentTenExport implements ShouldAutoSize
     
     public function __construct($studentId)
     {
-        $this->studentId = $studentId;
-        // dd(Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->first()->whereIn('students', [$this->studentId]));
-        $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->whereJsonContains('students', $studentId)->first();
-        // dd($class->grade_level);
+        $this->studentId = Student::where('id', $studentId)->first()->lrn;
+        $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->whereJsonContains('students', $this->studentId)->first();
         $subjectSem1 = SubjectLoad::where('class_id', $class->id)->where('semester', 1)->get();
         $subjectSem2 = SubjectLoad::where('class_id', $class->id)->where('semester', 2)->get();
-
         if($class->track_course == 'ABM'){
             $this->course = 'Academic Track - Accountancy, Business and Management (ABM)';
         } else if($class->track_course == 'STEM'){
@@ -67,70 +64,20 @@ class StudentTenExport implements ShouldAutoSize
             $this->course = 'TVL Track -  Information and Communications Technology (ICT)';
         }
 
-        $studentGradeCore1 = [];
-        $studentGradeCore2 = [];
-
-        $studentGradeApplied1 = [];
-        $studentGradeApplied2 = [];
         
-        $subjectNameCore1 = [];
-        $subjectNameCore2 = [];
-        
-        $subjectNameApplied1 = [];
-        $subjectNameApplied2 = [];
-
-
-        foreach ($subjectSem1 as $subject) {
-            $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-            $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-
-            if($subjectType == 'Core'){
-                $studentGradeCore1[] = $studentGrade;
-                $subjectNameCore1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            } else{
-                $studentGradeApplied1[] = $studentGrade;
-                $subjectNameApplied1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            }
-            
-            // $sN1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-        }
-        foreach ($subjectSem2 as $subject) {
-            $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-            $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-            
-            if($subjectType == 'Core'){
-                $studentGradeCore2[] = $studentGrade;
-                $subjectNameCore2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            } else{
-                $studentGradeApplied2[] = $studentGrade;
-                $subjectNameApplied2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            }
-        }
-
 
         $this->class = $class;
         $this->studentInfo = Student::where('lrn', $this->studentId)->first();
 
-        $this->studentGradeCore1 = $studentGradeCore1;
-        $this->subjectNameCore1 = $subjectNameCore1;
-        
-        $this->studentGradeCore2 = $studentGradeCore2;
-        $this->subjectNameCore2 = $subjectNameCore2;
+        $this->subjectSem1 = $subjectSem1;
+        $this->subjectSem2 = $subjectSem2;
 
-        $this->studentGradeApplied1 = $studentGradeApplied1;
-        $this->subjectNameApplied1 = $subjectNameApplied1;
-
-        $this->studentGradeApplied2 = $studentGradeApplied2;
-        $this->subjectNameApplied2 = $subjectNameApplied2;
-
-
-        // IF CLASS IS GRADE 12, POPULATE THE FRONT PART OF SF10 WITH PREVIOUS GRADES
         if($this->class->grade_level == "12"){
             $previousSY = SchoolYear::where('sydate', (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate)-1)->first();
             $classExist = Classes::where('school_year_id', $previousSY->id)->first();
+            
             if($classExist){
                 $previousClass = Classes::where('school_year_id', $previousSY->id)->whereJsonContains('students', $this->studentId)->first();
-                
                 $previousSubjectSem1 = SubjectLoad::where('class_id', $previousClass->id)->where('semester', 1)->get();
                 $previousSubjectSem2 = SubjectLoad::where('class_id', $previousClass->id)->where('semester', 2)->get();
 
@@ -156,61 +103,12 @@ class StudentTenExport implements ShouldAutoSize
                     $this->previousCourse = 'TVL Track -  Information and Communications Technology (ICT)';
                 }
 
-                $previousStudentGradeCore1 = [];
-                $previousStudentGradeCore2 = [];
-
-                $previousStudentGradeApplied1 = [];
-                $previousStudentGradeApplied2 = [];
-                
-                $previousSubjectNameCore1 = [];
-                $previousSubjectNameCore2 = [];
-                
-                $previousSubjectNameApplied1 = [];
-                $previousSubjectNameApplied2 = [];
-
-
-                foreach ($previousSubjectSem1 as $subject) {
-                    $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-                    $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-
-                    if($subjectType == 'Core'){
-                        $previousStudentGradeCore1[] = $studentGrade;
-                        $previousSubjectNameCore1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-                    } else{
-                        $previousStudentGradeApplied1[] = $studentGrade;
-                        $previousSubjectNameApplied1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-                    }
-                    
-                    // $sN1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-                }
-                foreach ($previousSubjectSem2 as $subject) {
-                    $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-                    $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-                    
-                    if($subjectType == 'Core'){
-                        $previousStudentGradeCore2[] = $studentGrade;
-                        $previousSubjectNameCore2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-                    } else{
-                        $previousStudentGradeApplied2[] = $studentGrade;
-                        $previousSubjectNameApplied2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-                    }
-                }
-                
                 $this->previousClass = $previousClass;
-
-                $this->previousStudentGradeCore1 = $previousStudentGradeCore1;
-                $this->previousSubjectNameCore1 = $previousSubjectNameCore1;
-                
-                $this->previousStudentGradeCore2 = $previousStudentGradeCore2;
-                $this->previousSubjectNameCore2 = $previousSubjectNameCore2;
-
-                $this->previousStudentGradeApplied1 = $previousStudentGradeApplied1;
-                $this->previousSubjectNameApplied1 = $previousSubjectNameApplied1;
-
-                $this->previousStudentGradeApplied2 = $previousStudentGradeApplied2;
-                $this->previousSubjectNameApplied2 = $previousSubjectNameApplied2;
+                $this->previousSubjectSem1 = $previousSubjectSem1;
+                $this->previousSubjectSem2 = $previousSubjectSem2;
             }
         }
+
     }
 
     /**

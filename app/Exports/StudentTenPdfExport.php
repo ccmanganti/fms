@@ -134,58 +134,81 @@ class StudentTenPdfExport implements ShouldAutoSize
 
         $fieldMappings = [];
 
-        // PERSONAL INFORMATION
-        $fieldMappings['LName'] = $this->studentInfo->lname;
-        $fieldMappings['FName'] = $this->studentInfo->fname;
-        $fieldMappings['MName'] = $this->studentInfo->mname;
-        $fieldMappings['Sex'] = $this->studentInfo->gender;
-        $fieldMappings['LRN'] = $this->studentInfo->lrn;
-        $fieldMappings['Birth'] = $this->studentInfo->date_of_birth;
-        $fieldMappings['TrackCourse1'] = $this->course;
-        $fieldMappings['TrackCourse2'] = $this->course;
-        $fieldMappings['Grade1'] = $this->class->grade_level;
-        $fieldMappings['Grade2'] = $this->class->grade_level;
-        $fieldMappings['School Year1'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
-        $fieldMappings['School Year2'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
-        $fieldMappings['Section1'] = $this->class->section;
-        $fieldMappings['Section2'] = $this->class->section;
-        $fieldMappings['Teacher'] = User::where('id', $this->class->adviser_id)->first()->name;
-        
-
-
-
 // SUBJECT NAMES ==========================================================
         $sem1List = [];
         $sem2List = [];
         $sem3List = [];
         $sem4List = [];
-        
 
         if($this->previousClass){
-            foreach ($this->previousSubjectSem1 as $index => $subject) {
+            // PERSONAL INFORMATION
+            $fieldMappings['LName'] = $this->studentInfo->lname;
+            $fieldMappings['FName'] = $this->studentInfo->fname;
+            $fieldMappings['MName'] = $this->studentInfo->mname;
+            $fieldMappings['Sex'] = $this->studentInfo->gender;
+            $fieldMappings['LRN'] = $this->studentInfo->lrn;
+            $fieldMappings['Birth'] = $this->studentInfo->date_of_birth;
+            
+            $fieldMappings['Grade3'] = $this->class->grade_level;
+            $fieldMappings['Grade4'] = $this->class->grade_level;            
+            $fieldMappings['Section3'] = $this->class->section;
+            $fieldMappings['Section4'] = $this->class->section;
+            $fieldMappings['School Year3'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
+            $fieldMappings['School Year4'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
+            $fieldMappings['TrackCourse3'] = $this->course;
+            $fieldMappings['TrackCourse4'] = $this->course;
+            $fieldMappings['Teacher2'] = User::where('id', $this->class->adviser_id)->first()->name;
+
+            $fieldMappings['Grade1'] = $this->previousClass->grade_level;
+            $fieldMappings['Grade2'] = $this->previousClass->grade_level;
+            $fieldMappings['Section1'] = $this->previousClass->section;
+            $fieldMappings['Section2'] = $this->previousClass->section;
+            $fieldMappings['School Year1'] = (SchoolYear::where('id', $this->previousClass->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->previousClass->school_year_id)->first()->sydate+1);
+            $fieldMappings['School Year2'] = (SchoolYear::where('id', $this->previousClass->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->previousClass->school_year_id)->first()->sydate+1);
+            $fieldMappings['TrackCourse1'] = $this->previousCourse;
+            $fieldMappings['TrackCourse2'] = $this->previousCourse;
+            $fieldMappings['Teacher'] = User::where('id', $this->previousClass->adviser_id)->first()->name;
+
+            foreach ($this->subjectSem1 as $index => $subject) {
                 $sem1List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
                 $sem1List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
                 $sem1List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
             }
-
-            foreach ($this->previousSubjectSem2 as $index => $subject) {
+            foreach ($this->subjectSem2 as $index => $subject) {
                 $sem2List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
                 $sem2List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
                 $sem2List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
             }
-            foreach ($this->subjectSem1 as $index => $subject) {
+
+            foreach ($this->previousSubjectSem1 as $index => $subject) {
                 $sem3List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
                 $sem3List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
                 $sem3List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
             }
-    
-            foreach ($this->subjectSem2 as $index => $subject) {
+            foreach ($this->previousSubjectSem2 as $index => $subject) {
                 $sem4List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
                 $sem4List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
                 $sem4List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
             }
 
         } else{
+            // PERSONAL INFORMATION
+            $fieldMappings['LName'] = $this->studentInfo->lname;
+            $fieldMappings['FName'] = $this->studentInfo->fname;
+            $fieldMappings['MName'] = $this->studentInfo->mname;
+            $fieldMappings['Sex'] = $this->studentInfo->gender;
+            $fieldMappings['LRN'] = $this->studentInfo->lrn;
+            $fieldMappings['Birth'] = $this->studentInfo->date_of_birth;
+            $fieldMappings['TrackCourse1'] = $this->course;
+            $fieldMappings['TrackCourse2'] = $this->course;
+            $fieldMappings['Grade1'] = $this->class->grade_level;
+            $fieldMappings['Grade2'] = $this->class->grade_level;
+            $fieldMappings['School Year1'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
+            $fieldMappings['School Year2'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
+            $fieldMappings['Section1'] = $this->class->section;
+            $fieldMappings['Section2'] = $this->class->section;
+            $fieldMappings['Teacher'] = User::where('id', $this->class->adviser_id)->first()->name;
+            
             foreach ($this->subjectSem1 as $index => $subject) {
                 $sem1List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
                 $sem1List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
