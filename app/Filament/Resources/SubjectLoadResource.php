@@ -54,7 +54,7 @@ class SubjectLoadResource extends Resource
 
     protected static function shouldRegisterNavigation(): bool
     {
-        if(auth()->user()->hasRole("Superadmin")){
+        if(auth()->user()->hasRole("Superadmin") || auth()->user()->hasRole("Principal")){
             return true;
         } else{
             return false;
@@ -152,6 +152,9 @@ class SubjectLoadResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make(auth()->user()->hasRole('Superadmin') ? 'export_class_record' : 'export')
+                ->label("ECR.XLSX")
+                ->url(fn (SubjectLoad $record): string => ('/e-class-records/'.$record->id.'/export')),
             ])
             ->bulkActions($bulkActions);
     }
