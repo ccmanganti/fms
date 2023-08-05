@@ -47,7 +47,7 @@ class StudentNinePdfExport implements ShouldAutoSize
         $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->whereJsonContains('students', $this->studentId)->first();
         $subjectSem1 = SubjectLoad::where('class_id', $class->id)->where('semester', 1)->get();
         $subjectSem2 = SubjectLoad::where('class_id', $class->id)->where('semester', 2)->get();
-        
+
         if($class->track_course == 'ABM'){
             $this->course = 'Academic Track - Accountancy, Business and Management (ABM)';
         } else if($class->track_course == 'STEM'){
@@ -70,65 +70,13 @@ class StudentNinePdfExport implements ShouldAutoSize
             $this->course = 'TVL Track -  Information and Communications Technology (ICT)';
         }
 
-        $studentGradeCore1 = [];
-        $studentGradeCore2 = [];
-
-        $studentGradeApplied1 = [];
-        $studentGradeApplied2 = [];
         
-        $subjectNameCore1 = [];
-        $subjectNameCore2 = [];
-        
-        $subjectNameApplied1 = [];
-        $subjectNameApplied2 = [];
-
-
-        foreach ($subjectSem1 as $subject) {
-            $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-            $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-
-            if($subjectType == 'Core'){
-                $studentGradeCore1[] = $studentGrade;
-                $subjectNameCore1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            } else{
-                $studentGradeApplied1[] = $studentGrade;
-                $subjectNameApplied1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            }
-            
-            // $sN1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-        }
-        foreach ($subjectSem2 as $subject) {
-            $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-            $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-            
-            if($subjectType == 'Core'){
-                $studentGradeCore2[] = $studentGrade;
-                $subjectNameCore2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            } else{
-                $studentGradeApplied2[] = $studentGrade;
-                $subjectNameApplied2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            }
-        }
-
-        // dd($subjectLoads[0]);
-        // dd((collect($subjectLoads[0]->student_grades)->where('name', $this->studentId)->first()));
 
         $this->class = $class;
         $this->studentInfo = Student::where('lrn', $this->studentId)->first();
 
-        $this->studentGradeCore1 = $studentGradeCore1;
-        $this->subjectNameCore1 = $subjectNameCore1;
-        
-        $this->studentGradeCore2 = $studentGradeCore2;
-        $this->subjectNameCore2 = $subjectNameCore2;
-
-        $this->studentGradeApplied1 = $studentGradeApplied1;
-        $this->subjectNameApplied1 = $subjectNameApplied1;
-
-        $this->studentGradeApplied2 = $studentGradeApplied2;
-        $this->subjectNameApplied2 = $subjectNameApplied2;
-
-        // dd($this->subjectNameCore1);
+        $this->subjectSem1 = $subjectSem1;
+        $this->subjectSem2 = $subjectSem2;
 
     }
 
@@ -174,59 +122,85 @@ class StudentNinePdfExport implements ShouldAutoSize
 
 // SUBJECT NAMES ==========================================================
 
-        // Subjects 1st Sem: Core
-        foreach ($this->subjectNameCore1 as $index => $name) {
-            $newIndex = $index+1;
-            $fieldMappings["core{$newIndex}"] = $name;
-        }
-        // Subjects 1st Sem: Applied
-        foreach ($this->subjectNameCore2 as $index => $name) {
-            $newIndex = $index+1;
-            $fieldMappings["sem2core{$newIndex}"] = $name;
-        }
-        
-        // Subjects 2nd Sem: Core
-        foreach ($this->subjectNameApplied1 as $index => $name) {
-            $newIndex = $index+1;
-            $fieldMappings["Ap{$newIndex}"] = $name;
-        }
-        // Subjects 2nd Sem: Applied
-        foreach ($this->subjectNameApplied2 as $index => $name) {
-            $newIndex = $index+1;
-            $fieldMappings["sem2ap{$newIndex}"] = $name;
+        $sem1List = [];
+        $sem2List = [];
+
+        foreach ($this->subjectSem1 as $index => $subject) {
+            $sem1List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
+            $sem1List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
+            $sem1List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
         }
 
-// SUBJECT GRADES ==========================================================
-
-
-        // Grades 1st Sem: Core
-        foreach ($this->studentGradeCore1 as $index => $grade) {
-            $newIndex = $index+1;
-            $fieldMappings["core{$newIndex}G1"] = $grade['1st_quarter_grade'];
-            $fieldMappings["core{$newIndex}G2"] = $grade['2nd_quarter_grade'];
-            $fieldMappings["core{$newIndex}G3"] = $grade['average'];
-        }
-        // Grades 1st Sem: Applied
-        foreach ($this->studentGradeApplied1 as $index => $grade) {
-            $newIndex = $index+1;
-            $fieldMappings["Ap{$newIndex}G1"] = $grade['1st_quarter_grade'];
-            $fieldMappings["Ap{$newIndex}G2"] = $grade['2nd_quarter_grade'];
-            $fieldMappings["Ap{$newIndex}G3"] = $grade['average'];
+        foreach ($this->subjectSem2 as $index => $subject) {
+            $sem2List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
+            $sem2List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
+            $sem2List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
         }
 
-        // Grades 2nd Sem: Core
-        foreach ($this->studentGradeCore2 as $index => $grade) {
-            $newIndex = $index+1;
-            $fieldMappings["sem2core{$newIndex}G1"] = $grade['1st_quarter_grade'];
-            $fieldMappings["sem2core{$newIndex}G2"] = $grade['2nd_quarter_grade'];
-            $fieldMappings["sem2core{$newIndex}G3"] = $grade['average'];
+
+        // 1st Semester
+        $averages = [];
+        // Core Subjects
+        $newIndex = 1;
+        foreach ($sem1List as $index => $subject) {
+            if($subject["type"] == "Core"){
+                $fieldMappings["core{$newIndex}"] = $subject["name"];
+                $fieldMappings["core{$newIndex}G1"] = $subject["grade"]["1st_quarter_grade"];
+                $fieldMappings["core{$newIndex}G2"] = $subject["grade"]["2nd_quarter_grade"];
+                $fieldMappings["core{$newIndex}G3"] = $subject["grade"]["average"];
+                $newIndex++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+
+            }
         }
-        // Grades 2nd Sem: Applied
-        foreach ($this->studentGradeApplied2 as $index => $grade) {
-            $newIndex = $index+1;
-            $fieldMappings["sem2Ap{$newIndex}G1"] = $grade['1st_quarter_grade'];
-            $fieldMappings["sem2Ap{$newIndex}G2"] = $grade['2nd_quarter_grade'];
-            $fieldMappings["sem2Ap{$newIndex}G3"] = $grade['average'];
+        // Applied Subjects
+        $newIndex = 1;
+        foreach ($sem1List as $index => $subject) {
+            if($subject["type"] != "Core"){
+                $fieldMappings["Ap{$newIndex}"] = $subject["name"];
+                $fieldMappings["Ap{$newIndex}G1"] = $subject["grade"]["1st_quarter_grade"];
+                $fieldMappings["Ap{$newIndex}G2"] = $subject["grade"]["2nd_quarter_grade"];
+                $fieldMappings["Ap{$newIndex}G3"] = $subject["grade"]["average"];
+                $newIndex++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+
+            }
+        }
+
+        if($averages != []){
+            $fieldMappings['GA1'] = array_sum($averages) / count($averages);
+        }
+
+        // 2nd Semester
+        $averages = [];
+        // Core Subjects
+        $newIndex = 1;
+        foreach ($sem2List as $index => $subject) {
+            if($subject["type"] == "Core"){
+                $fieldMappings["sem2core{$newIndex}"] = $subject["name"];
+                $fieldMappings["sem2core{$newIndex}G1"] = $subject["grade"]["1st_quarter_grade"];
+                $fieldMappings["sem2core{$newIndex}G2"] = $subject["grade"]["2nd_quarter_grade"];
+                $fieldMappings["sem2core{$newIndex}G3"] = $subject["grade"]["average"];
+                $newIndex++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+            }
+        }
+        // Applied Subjects
+        // dd($sem2List);
+        $newIndex = 1;
+        foreach ($sem2List as $index => $subject) {
+            if($subject["type"] != "Core"){
+                $fieldMappings["sem2ap{$newIndex}"] = $subject["name"];
+                $fieldMappings["sem2ap{$newIndex}G1"] = $subject["grade"]["1st_quarter_grade"];
+                $fieldMappings["sem2ap{$newIndex}G2"] = $subject["grade"]["2nd_quarter_grade"];
+                $fieldMappings["sem2ap{$newIndex}G3"] = $subject["grade"]["average"];
+                $newIndex++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+            }
+        }
+
+        if($averages != []){
+            $fieldMappings['GA2'] = array_sum($averages) / count($averages);
         }
 
         return $fieldMappings;
