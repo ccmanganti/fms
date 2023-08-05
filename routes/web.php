@@ -38,7 +38,6 @@ Route::get('/{studentid}/export-sf9', function ($studentId) {
     $studentFileName = 'SF9'.' - '.$student->lname.', '.$student->fname;
     $templatePath = public_path('sf9.xlsx');
     $filename = $studentFileName.'.xlsx';
-    $studentId = $student->lrn;
     $export = new StudentNineExport($studentId);
     return $export->download($templatePath)->setContentDisposition('attachment', $filename);
 });
@@ -53,7 +52,6 @@ Route::get('/{studentid}/export-sf10', function ($studentId) {
     $studentFileName = 'SF10'.' - '.$student->lname.', '.$student->fname;
     $templatePath = public_path('sf10.xlsx');
     $filename = $studentFileName.'.xlsx';
-    $studentId = $student->lrn;
     $export = new StudentTenExport($studentId);
     return $export->download($templatePath)->setContentDisposition('attachment', $filename);
 });

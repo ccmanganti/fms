@@ -29,80 +29,44 @@ class StudentNineExport implements ShouldAutoSize
     protected $studentId;
     protected $class;
     protected $subjectLoads;
-    protected $sG1;
-    protected $sG2;
-    protected $sN1;
-    protected $sN2;
 
     
     public function __construct($studentId)
     {
-        $this->studentId = $studentId;
-        // dd(Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->first()->whereIn('students', [$this->studentId]));
-        $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->first()->whereJsonContains('students', $studentId)->first();
+        $this->studentId = Student::where('id', $studentId)->first()->lrn;
+        $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->whereJsonContains('students', $this->studentId)->first();
         $subjectSem1 = SubjectLoad::where('class_id', $class->id)->where('semester', 1)->get();
         $subjectSem2 = SubjectLoad::where('class_id', $class->id)->where('semester', 2)->get();
-        
-        $studentGradeCore1 = [];
-        $studentGradeCore2 = [];
 
-        $studentGradeApplied1 = [];
-        $studentGradeApplied2 = [];
-        
-        $subjectNameCore1 = [];
-        $subjectNameCore2 = [];
-        
-        $subjectNameApplied1 = [];
-        $subjectNameApplied2 = [];
-
-
-        foreach ($subjectSem1 as $subject) {
-            $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-            $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-
-            if($subjectType == 'Core'){
-                $studentGradeCore1[] = $studentGrade;
-                $subjectNameCore1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            } else{
-                $studentGradeApplied1[] = $studentGrade;
-                $subjectNameApplied1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            }
-            
-            // $sN1[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-        }
-        foreach ($subjectSem2 as $subject) {
-            $studentGrade = collect($subject->student_grades)->where('name', $this->studentId)->first();
-            $subjectType = Subject::where('id', $subject->subject_id)->first()->subject_type;
-            
-            if($subjectType == 'Core'){
-                $studentGradeCore2[] = $studentGrade;
-                $subjectNameCore2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            } else{
-                $studentGradeApplied2[] = $studentGrade;
-                $subjectNameApplied2[] = Subject::where('id', $subject->subject_id)->first()->subject_name;
-            }
+        if($class->track_course == 'ABM'){
+            $this->course = 'Academic Track - Accountancy, Business and Management (ABM)';
+        } else if($class->track_course == 'STEM'){
+            $this->course = 'Academic Track - Science, Technology, Engineering, and Mathematics (STEM)';
+        } else if($class->track_course == 'HUMSS'){
+            $this->course = 'Academic Track -Humanities and Social Sciences (HUMSS)';
+        } else if($class->track_course == 'GAS'){
+            $this->course = 'Academic Track - General Academic Strand (GAS)';
+        } else if($class->track_course == 'ADT'){
+            $this->course = 'Arts and Design Track';
+        } else if($class->track_course == 'ST'){
+            $this->course = 'Sports Track';
+        } else if($class->track_course == 'TVL - AFA'){
+            $this->course = 'TVL Track -  Agricultural-Fishery Arts (AFA)';
+        } else if($class->track_course == 'TVL - HE'){
+            $this->course = 'TVL Track -  Home Economics (HE)';
+        } else if($class->track_course == 'TVL - IA'){
+            $this->course = 'TVL Track -  Industrial Arts (IA)';
+        } else if($class->track_course == 'TVL - ICT'){
+            $this->course = 'TVL Track -  Information and Communications Technology (ICT)';
         }
 
-        // dd($subjectLoads[0]);
-        // dd((collect($subjectLoads[0]->student_grades)->where('name', $this->studentId)->first()));
+        
 
         $this->class = $class;
         $this->studentInfo = Student::where('lrn', $this->studentId)->first();
 
-        $this->studentGradeCore1 = $studentGradeCore1;
-        $this->subjectNameCore1 = $subjectNameCore1;
-        
-        $this->studentGradeCore2 = $studentGradeCore2;
-        $this->subjectNameCore2 = $subjectNameCore2;
-
-        $this->studentGradeApplied1 = $studentGradeApplied1;
-        $this->subjectNameApplied1 = $subjectNameApplied1;
-
-        $this->studentGradeApplied2 = $studentGradeApplied2;
-        $this->subjectNameApplied2 = $subjectNameApplied2;
-
-        // dd($this->subjectNameCore1);
-
+        $this->subjectSem1 = $subjectSem1;
+        $this->subjectSem2 = $subjectSem2;
     }
 
     /**
@@ -134,50 +98,84 @@ class StudentNineExport implements ShouldAutoSize
         $worksheetFront->setCellValue("V21", User::where('id', $this->class->adviser_id)->first()->name);
         $worksheetFront->setCellValue("V30", User::where('id', $this->class->adviser_id)->first()->name);
 
-        // 1st Semester Core Subjects
+// SUBJECT NAMES ==========================================================
+
+        $sem1List = [];
+        $sem2List = [];
+
+        foreach ($this->subjectSem1 as $index => $subject) {
+            $sem1List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
+            $sem1List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
+            $sem1List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
+        }
+
+        foreach ($this->subjectSem2 as $index => $subject) {
+            $sem2List[$index]['type'] = Subject::where('id', $subject->subject_id)->first()->subject_type;
+            $sem2List[$index]['name'] = Subject::where('id', $subject->subject_id)->first()->subject_name;
+            $sem2List[$index]['grade'] = collect($subject->student_grades)->where('name', $this->studentId)->first();
+        }
+
+        // 1st Semester
+        // Core Subjects
+        $averages = [];
         $row = 7;
-        foreach ($this->subjectNameCore1 as $index => $subject) {
-            $worksheet->setCellValue("A{$row}", $subject);
-            $worksheet->setCellValue("F{$row}", $this->studentGradeCore1[$index]['1st_quarter_grade']);
-            $worksheet->setCellValue("M{$row}", $this->studentGradeCore1[$index]['2nd_quarter_grade']);
-            $worksheet->setCellValue("S{$row}", $this->studentGradeCore1[$index]['average']);
-            // dd($this->studentGradeCore1[$index]);
-            $row++;
-
+        foreach ($sem1List as $index => $subject) {
+            if($subject["type"] == "Core"){
+                $worksheet->setCellValue("A{$row}", $subject["name"]);
+                $worksheet->setCellValue("F{$row}", $subject["grade"]['1st_quarter_grade']);
+                $worksheet->setCellValue("M{$row}", $subject["grade"]['2nd_quarter_grade']);
+                $worksheet->setCellValue("S{$row}", $subject["grade"]['average']);
+                $row++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+            }
         }
-
-        // 1st Semester Applied Subjects
+        // Applied Subjects
         $row = 16;
-        foreach ($this->subjectNameApplied1 as $index => $subject) {
-            $worksheet->setCellValue("A{$row}", $subject);
-            $worksheet->setCellValue("F{$row}", $this->studentGradeApplied1[$index]['1st_quarter_grade']);
-            $worksheet->setCellValue("M{$row}", $this->studentGradeApplied1[$index]['2nd_quarter_grade']);
-            $worksheet->setCellValue("S{$row}", $this->studentGradeApplied1[$index]['average']);
-            // dd($this->studentGradeCore1[$index]);
-            $row++;
+        foreach ($sem1List as $index => $subject) {
+            if($subject["type"] != "Core"){
+                $worksheet->setCellValue("A{$row}", $subject["name"]);
+                $worksheet->setCellValue("F{$row}", $subject["grade"]['1st_quarter_grade']);
+                $worksheet->setCellValue("M{$row}", $subject["grade"]['2nd_quarter_grade']);
+                $worksheet->setCellValue("S{$row}", $subject["grade"]['average']);
+                $row++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+
+            }
         }
 
-        // 2nd Semester Core Subjects
+        if($averages != []){
+            $worksheet->setCellValue("S24", array_sum($averages) / count($averages));
+        }
+
+        // 2nd Semester
+        // Core Subjects
+        $averages = [];
         $row = 30;
-        foreach ($this->subjectNameCore2 as $index => $subject) {
-            $worksheet->setCellValue("A{$row}", $subject);
-            $worksheet->setCellValue("F{$row}", $this->studentGradeCore2[$index]['1st_quarter_grade']);
-            $worksheet->setCellValue("M{$row}", $this->studentGradeCore2[$index]['2nd_quarter_grade']);
-            $worksheet->setCellValue("S{$row}", $this->studentGradeCore2[$index]['average']);
-            // dd($this->studentGradeCore1[$index]);
-            $row++;
-
+        foreach ($sem2List as $index => $subject) {
+            if($subject["type"] == "Core"){
+                $worksheet->setCellValue("A{$row}", $subject["name"]);
+                $worksheet->setCellValue("F{$row}", $subject["grade"]['1st_quarter_grade']);
+                $worksheet->setCellValue("M{$row}", $subject["grade"]['2nd_quarter_grade']);
+                $worksheet->setCellValue("S{$row}", $subject["grade"]['average']);
+                $row++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+            }
+        }
+        // Applied Subjects
+        $row = 39;
+        foreach ($sem2List as $index => $subject) {
+            if($subject["type"] != "Core"){
+                $worksheet->setCellValue("A{$row}", $subject["name"]);
+                $worksheet->setCellValue("F{$row}", $subject["grade"]['1st_quarter_grade']);
+                $worksheet->setCellValue("M{$row}", $subject["grade"]['2nd_quarter_grade']);
+                $worksheet->setCellValue("S{$row}", $subject["grade"]['average']);
+                $row++;
+                $averages[] = $subject["grade"]["average"] ?? 0;
+            }
         }
 
-        // 2nd Semester Applied Subjects
-        $row = 39;
-        foreach ($this->subjectNameApplied2 as $index => $subject) {
-            $worksheet->setCellValue("A{$row}", $subject);
-            $worksheet->setCellValue("F{$row}", $this->studentGradeApplied2[$index]['1st_quarter_grade']);
-            $worksheet->setCellValue("M{$row}", $this->studentGradeApplied2[$index]['2nd_quarter_grade']);
-            $worksheet->setCellValue("S{$row}", $this->studentGradeApplied2[$index]['average']);
-            // dd($this->studentGradeCore1[$index]);
-            $row++;
+        if($averages != []){
+            $worksheet->setCellValue("S47", array_sum($averages) / count($averages));
         }
 
 
