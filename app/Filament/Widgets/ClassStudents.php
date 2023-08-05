@@ -60,7 +60,7 @@ class ClassStudents extends BaseWidget
     {
         return [
             Action::make('export_sf9')
-                ->label('SF9.XLSX')
+                ->label('SF90.XLSX')
                 ->icon('heroicon-o-newspaper')
                 ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9/')),
             Action::make('export_sf9_pdf')
