@@ -95,6 +95,12 @@ class SchoolYearResource extends Resource
                 ToggleColumn::make('current')
                     ->searchable()
                     ->sortable()
+                    ->disabled(function(){
+                        if(auth()->user()->hasRole("Principal") && !auth()->user()->hasRole("Superadmin")){
+                            return true;
+                        }
+                        return false;
+                    })
                     ->toggleable(),
                 TextColumn::make('updated_at')
                     ->searchable()
