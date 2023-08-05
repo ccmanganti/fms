@@ -211,7 +211,6 @@ class StudentTenExport implements ShouldAutoSize
                 $this->previousSubjectNameApplied2 = $previousSubjectNameApplied2;
             }
         }
-
     }
 
     /**

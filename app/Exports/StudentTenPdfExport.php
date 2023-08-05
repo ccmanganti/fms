@@ -8,9 +8,6 @@ use App\Models\SchoolYear;
 use App\Models\SubjectLoad;
 use App\Models\Subject;
 use App\Models\User;
-use setasign\Fpdi\Fpdi;
-use setasign\FpdiFpdf\FpdiFpdf;
-use setasign\Fpdi\Fpdf\FpdfTpl;
 use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -20,14 +17,9 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf as PdfDompdf;
-use Dompdf\Dompdf as DompdfLib;
 use PhpOffice\PhpSpreadsheet\Writer\Html;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Protection;
-use GuzzleHttp\Client;
-use Ilovepdf\Ilovepdf;
-use Smalot\PdfParser\Parser;
-use setasign\Fpdi\PdfReader;
 use mikehaertl\pdftk\Pdf;
 
 class StudentTenPdfExport implements ShouldAutoSize
