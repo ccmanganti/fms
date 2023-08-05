@@ -209,7 +209,7 @@ class StudentNineExport implements ShouldAutoSize
 
         $fileContents = file_get_contents($tempPdfFilePath);
 
-        // Set the appropriate headers for PDF download
+        // Set the appropriate headers for PDF downloads
         $headers = [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'attachment; filename="sf9.pdf"',
