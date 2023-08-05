@@ -103,7 +103,6 @@ class StudentTenPdfExport implements ShouldAutoSize
                 $this->previousClass = $previousClass;
                 $this->previousSubjectSem1 = $previousSubjectSem1;
                 $this->previousSubjectSem2 = $previousSubjectSem2;
-
             }
         }
 
