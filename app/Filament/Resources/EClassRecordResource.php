@@ -166,7 +166,7 @@ class EClassRecordResource extends Resource
                             ->afterStateUpdated(function (Closure $set, $get) {
                                 $average = ((int)$get('1st_quarter_grade') + (int)$get('2nd_quarter_grade'))/2;
                                 $set('average', $average);
-                                if($average > 75){
+                                if($average > 74){
                                     $set('remarks', 'Passed');
                                 } else{
                                     $set('remarks', 'Failed');

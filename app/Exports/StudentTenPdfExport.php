@@ -381,8 +381,6 @@ class StudentTenPdfExport implements ShouldAutoSize
             }
         }
         
-
-
         return $fieldMappings;
     }
 }
