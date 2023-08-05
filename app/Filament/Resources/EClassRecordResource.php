@@ -254,6 +254,8 @@ class EClassRecordResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()->label('Input Grades'),
                 Action::make(auth()->user()->hasRole('Superadmin') ? 'export_class_record' : 'export')
+                ->label("ECR.XLSX")
+                ->icon('heroicon-o-newspaper')
                 ->url(fn (SubjectLoad $record): string => ('/e-class-records/'.$record->id.'/export')),
             ])
             ->bulkActions([
