@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Exports\StudentsExport;
+use App\Exports\StudentOneExport;
+use App\Exports\StudentTwoExport;
 use App\Exports\StudentNineExport;
 use App\Exports\StudentTenExport;
 use App\Exports\StudentNinePdfExport;
@@ -24,12 +25,21 @@ use App\Jobs\GenerateSf9Job;
 |
 */
 
-Route::get('/{classid}/export-sf1', function ($classId) {
+Route::get('/{classid}/export-sf1-first', function ($classId) {
     $class = 'SF1'.' - '.Classes::where('id', $classId)->first()->name;
     $templatePath = public_path('sf1.xlsx');
     $filename = $class.'.xlsx';
 
-    $export = new StudentsExport($classId);
+    $export = new StudentOneExport($classId);
+    return $export->download($templatePath)->setContentDisposition('attachment', $filename);
+});
+
+Route::get('/{classid}/export-sf1-second', function ($classId) {
+    $class = 'SF1'.' - '.Classes::where('id', $classId)->first()->name;
+    $templatePath = public_path('sf1.xlsx');
+    $filename = $class.'.xlsx';
+
+    $export = new StudentTwoExport($classId);
     return $export->download($templatePath)->setContentDisposition('attachment', $filename);
 });
 

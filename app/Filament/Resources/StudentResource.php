@@ -222,44 +222,47 @@ class StudentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Action::make('export_sf9')
-                ->icon('heroicon-o-newspaper')
-                ->label('SF9.XLSX')
-                ->hidden(function(){
-                    if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
-                        return true;
-                    }
-                })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9/')),
-                Action::make('export_sf9_pdf')
-                ->icon('heroicon-o-printer')
-                ->label('SF9.PDF')
-                ->hidden(function(){
-                    if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
-                        return true;
-                    }
-                })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9-pdf/'))
-                ->openUrlInNewTab(),
-                Action::make('export_sf10')
-                ->icon('heroicon-o-newspaper')
-                ->label('SF10.XLSX')
-                ->hidden(function(){
-                    if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
-                        return true;
-                    }
-                })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf10/')),
-                Action::make('export_sf10_pdf')
-                ->icon('heroicon-o-printer')
-                ->label('SF10.PDF')
-                ->hidden(function(){
-                    if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
-                        return true;
-                    }
-                })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf10-pdf/'))
-                ->openUrlInNewTab(),
+                Tables\Actions\ActionGroup::make([
+                    Action::make('export_sf9')
+                    ->icon('heroicon-o-newspaper')
+                    ->label('SF9.XLSX')
+                    ->hidden(function(){
+                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                            return true;
+                        }
+                    })
+                    ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9/')),
+                    Action::make('export_sf9_pdf')
+                    ->icon('heroicon-o-printer')
+                    ->label('SF9.PDF')
+                    ->hidden(function(){
+                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                            return true;
+                        }
+                    })
+                    ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9-pdf/'))
+                    ->openUrlInNewTab(),
+                    Action::make('export_sf10')
+                    ->icon('heroicon-o-newspaper')
+                    ->label('SF10.XLSX')
+                    ->hidden(function(){
+                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                            return true;
+                        }
+                    })
+                    ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf10/')),
+                    Action::make('export_sf10_pdf')
+                    ->icon('heroicon-o-printer')
+                    ->label('SF10.PDF')
+                    ->hidden(function(){
+                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                            return true;
+                        }
+                    })
+                    ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf10-pdf/'))
+                    ->openUrlInNewTab(),
+                ]),
+                
             ])
             ->bulkActions($bulkActions);
     }

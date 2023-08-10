@@ -21,9 +21,26 @@ class ListMyClasses extends ListRecords
         // $actions[] = Actions\CreateAction::make();
         $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('adviser_id', auth()->user()->id)->first();
         if($class){
-            $actions[] = Action::make('export')
-            ->label('Export SF1')
-            ->url(('/'.$class->id.'/export-sf1'));
+            $actions[] = Actions\ActionGroup::make([
+                Action::make('export_sf1_first_xlsx')
+                ->label('SF1 - 1st Sem.xlsx')
+                ->url(('/'.$class->id.'/export-sf1-first')),
+                Action::make('export_sf1_second_xlsx')
+                ->label('SF1 - 2nd Sem.xlsx')
+                ->url(('/'.$class->id.'/export-sf1-second')),
+                Action::make('export_sf1_first_pdf')
+                ->label('SF1 - 1st Sem.pdf')
+                ->url(('/'.$class->id.'/export-sf1-first-pdf')),
+                Action::make('export_sf1_second_pdf')
+                ->label('SF1 - 2nd Sem.pdf')
+                ->url(('/'.$class->id.'/export-sf1-second-pdf'))
+            ]);
+            // $actions[] = Action::make('export_sf1_first_xlsx')
+            // ->label('SF1 - 1st Sem.xlsx')
+            // ->url(('/'.$class->id.'/export-sf1-first'));
+            // $actions[] = Action::make('export_sf1_second_xlsx')
+            // ->label('SF1 - 2nd Sem.xlsx')
+            // ->url(('/'.$class->id.'/export-sf1-second'));
         } else{
             $actions = [];
         }

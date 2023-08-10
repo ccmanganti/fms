@@ -256,14 +256,30 @@ class ClassesResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Action::make('export')
-                ->icon('heroicon-o-newspaper')
-                ->label('SF1.XLSX')
-                ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1')),
                 Action::make('students')
                 ->label('Students')
                 ->icon('heroicon-o-user-group')
                 ->url(fn (Classes $record): string => ('/classes/'.$record->id.'/class')),
+                Tables\Actions\ActionGroup::make([
+                    Action::make('export_sf1_first_xlsx')
+                    ->icon('heroicon-o-newspaper')
+                    ->label('SF1 - 1st Sem.xlsx')
+                    ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-first')),
+                    Action::make('export_sf1_second_xlsx')
+                    ->icon('heroicon-o-newspaper')
+                    ->label('SF1 - 2nd Sem.xlsx')
+                    ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-second')),
+                    Action::make('export_sf1_first_pdf')
+                    ->icon('heroicon-o-newspaper')
+                    ->label('SF1 - 1st Sem.pdf')
+                    ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-first-pdf')),
+                    Action::make('export_sf1_second_pdf')
+                    ->icon('heroicon-o-newspaper')
+                    ->label('SF1 - 2nd Sem.pdf')
+                    ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-second-pdf')),
+                ]),
+                
+
             ])
             ->bulkActions($bulkActions);
     }

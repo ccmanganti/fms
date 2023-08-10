@@ -23,7 +23,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Protection;
 use GuzzleHttp\Client;
 
-class StudentsExport implements FromCollection, ShouldAutoSize
+class StudentOneExport implements FromCollection, ShouldAutoSize
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -64,6 +64,7 @@ class StudentsExport implements FromCollection, ShouldAutoSize
         return StudentOfClass::whereIn('lrn', Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('id', $this->classId)->first()->students)
             ->whereIn('gender', ['M', 'F'])
             ->where('name', $this->class->name)
+            ->where('sem_1_status', null)
             ->orderByRaw("FIELD(gender, 'M', 'F'), lname ASC")
             ->get();
     }
@@ -114,6 +115,7 @@ class StudentsExport implements FromCollection, ShouldAutoSize
         $data = $this->collection();
 
         $worksheet->setCellValue("Z9", (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1));
+        $worksheet->setCellValue("I9", 'First Semester');
         $worksheet->setCellValue("I16", $this->class->section);
         $worksheet->setCellValue("AK9", $this->class->grade_level);
         $worksheet->setCellValue("AT26", User::where('id', $this->class->adviser_id)->first()->name);
