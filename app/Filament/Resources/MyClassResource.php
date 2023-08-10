@@ -11,6 +11,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use App\Models\SchoolYear;
 use App\Models\Student;
+use App\Models\StudentOfClass;
 use App\Models\Role;
 use App\Models\Classes;
 use App\Models\Philprovince;
@@ -35,25 +36,26 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\DeleteBulkAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
-use App\Filament\Resources\StudentResource\Pages;
+use App\Filament\Resources\MyClassResource\Pages;
 use Konnco\FilamentImport\Actions\ImportAction;
 use Konnco\FilamentImport\Actions\ImportField;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
-use App\Filament\Resources\StudentResource\RelationManagers;
+use App\Filament\Resources\MyClassResource\RelationManagers;
 
-class StudentResource extends Resource
+class MyClassResource extends Resource
 {
     protected static ?int $navigationSort = 5;
 
-    protected static ?string $model = Student::class;
+    protected static ?string $model = StudentOfClass::class;
 
-    protected static ?string $navigationLabel = 'Students';
+    protected static ?string $slug = 'my-class';
+    protected static ?string $navigationLabel = 'My Class';
 
     protected static function shouldRegisterNavigation(): bool
     {
-        if(auth()->user()->hasRole("Superadmin") || auth()->user()->hasRole("Principal")){
+        if(auth()->user()->hasRole("Adviser")){
             return true;
         } else{
             return false;
@@ -81,11 +83,35 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('I. Basic Student Information')->schema([
+                Section::make('I. Student Semestral Status')->schema([
+                    Toggle::make('sem_1_status')
+                    ->reactive()
+                    ->label('Drop - 1st Semester')
+                    ->afterStateUpdated(function (Closure $set, callable $get) {
+                        if($get('sem_1_status') == true){
+                            $set('sem_2_status', true);
+                        }
+                        else{
+                            $set('sem_2_status', false);
+                        }
+                    }),
+                    Toggle::make('sem_2_status')
+                    ->reactive()
+                    ->label('Drop - 2nd Semester')
+                    ->disabled(function (callable $get) {
+                        if($get('sem_1_status') == true){
+                            return true;
+                        }
+                        return false;
+                    })
+                ])
+                ->hidden(fn() => auth()->user()->hasRole("Superadmin"))
+                ->columns(2)
+                ->description("Set student's semestral status. If dropped on first semester, student will automatically be dropped on second semester."),
+                Section::make('II. Basic Student Information')->schema([
                     TextInput::make('lrn')
                         ->required()
-                        ->numeric()
-                        ->unique(ignorable: fn ($record) => $record),
+                        ->numeric(),
                     TextInput::make('lname')
                         ->required()
                         ->maxLength(255),
@@ -138,7 +164,7 @@ class StudentResource extends Resource
                 ])
                 ->columns(2),
                 
-                Section::make('II. Address')->schema([
+                Section::make('III. Address')->schema([
                     TextInput::make('no_street_purok')
                         ->maxLength(255),
                     Select::make('province')
@@ -165,7 +191,7 @@ class StudentResource extends Resource
                     ->disabled(fn (Closure $get) => $get('municipality') == null),
                 ]),
 
-                Section::make('III. Parental and Guardian Information')->schema([
+                Section::make('IV. Parental and Guardian Information')->schema([
                     TextInput::make('mother_name')
                         ->maxLength(255),
                     TextInput::make('father_name')
@@ -183,7 +209,7 @@ class StudentResource extends Resource
                         ]),
                 ])->columns(2),
 
-                Section::make('IV. Additional Information')->schema([
+                Section::make('V. Additional Information')->schema([
                     TextInput::make('contact_number'),
                     Select::make('modality')
                         ->options([
@@ -196,7 +222,10 @@ class StudentResource extends Resource
                             'IRREGULAR' => 'Irregular',
                         ]),
                     TextInput::make('remarks'),
-                ]),
+                    ]),
+                
+
+
             ]);
     }
 
@@ -230,7 +259,7 @@ class StudentResource extends Resource
                         return true;
                     }
                 })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9/')),
+                ->url(fn (StudentOfClass $record): string => ('/'.$record->id.'/export-sf9/')),
                 Action::make('export_sf9_pdf')
                 ->icon('heroicon-o-printer')
                 ->label('SF9.PDF')
@@ -239,7 +268,7 @@ class StudentResource extends Resource
                         return true;
                     }
                 })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf9-pdf/'))
+                ->url(fn (StudentOfClass $record): string => ('/'.$record->id.'/export-sf9-pdf/'))
                 ->openUrlInNewTab(),
                 Action::make('export_sf10')
                 ->icon('heroicon-o-newspaper')
@@ -249,7 +278,7 @@ class StudentResource extends Resource
                         return true;
                     }
                 })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf10/')),
+                ->url(fn (StudentOfClass $record): string => ('/'.$record->id.'/export-sf10/')),
                 Action::make('export_sf10_pdf')
                 ->icon('heroicon-o-printer')
                 ->label('SF10.PDF')
@@ -258,7 +287,7 @@ class StudentResource extends Resource
                         return true;
                     }
                 })
-                ->url(fn (Student $record): string => ('/'.$record->id.'/export-sf10-pdf/'))
+                ->url(fn (StudentOfClass $record): string => ('/'.$record->id.'/export-sf10-pdf/'))
                 ->openUrlInNewTab(),
             ])
             ->bulkActions($bulkActions);
@@ -276,34 +305,28 @@ class StudentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStudents::route('/'),
+            'index' => Pages\ListMyClasses::route('/'),
             // 'create' => Pages\CreateStudent::route('/create'),
             // 'edit' => Pages\EditStudent::route('/{record}/edit'),
         ];
     }    
 
-    // public static function getEloquentQuery(): Builder
-    // {
-    //     $user = auth()->user();
-    //     $role = $user->getRoleNames()->first();
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+        $role = $user->getRoleNames()->first();
 
-    //     if ($role === 'Superadmin') {
-    //         return parent::getEloquentQuery()->where('lname', '!=', '');
-    //     } elseif ($role === 'Adviser') {
-    //         $adviserId = $user->id;
+        $adviserId = $user->id;
 
-    //         // Get the ID of the current school year
-    //         $currentSchoolYearId = SchoolYear::where('current', true)->value('id');
+        // Get the ID of the current school year
+        $currentSchoolYearId = SchoolYear::where('current', true)->value('id');
+        // Get the student LRNs of the classes owned by the current adviser
+        $studentLRNs = Classes::where('adviser_id', $adviserId)
+            ->where('school_year_id', $currentSchoolYearId)
+            ->pluck('students')
+            ->flatten()
+            ->toArray();
+        return parent::getEloquentQuery()->whereIn('lrn', $studentLRNs)->where('school_year_id', $currentSchoolYearId);
 
-    //         // Get the student LRNs of the classes owned by the current adviser
-    //         $studentLRNs = Classes::where('adviser_id', $adviserId)
-    //             ->where('school_year_id', $currentSchoolYearId)
-    //             ->pluck('students')
-    //             ->flatten()
-    //             ->toArray();
-    //         return parent::getEloquentQuery()->whereIn('lrn', $studentLRNs);
-    //     }
-
-    //     return parent::getEloquentQuery();
-    // }
+    }
 }

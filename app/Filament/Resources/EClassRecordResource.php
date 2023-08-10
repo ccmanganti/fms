@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\SchoolYear;
 use App\Models\SubjectLoad;
 use App\Models\Student;
+use App\Models\StudentOfCLass;
 use App\Models\Role;
 use App\Models\Classes;
 use App\Models\Subject;
@@ -120,16 +121,27 @@ class EClassRecordResource extends Resource
                             ->disabled()
                             ->columnSpan(3)
                             ->options(function (callable $get) {
-                                if(!$get('../../class_id')){
+                                if(!$get('../../class_id') || !$get('../../subject_id')){
                                     return [];
                                 }
-                                $students = Student::whereIn('lrn', Classes::where('id', $get('../../class_id'))->first()->students)->get();
-                            
-                                return $students->pluck('lname', 'lrn')->map(function ($lname, $lrn) use ($students) {
+                                $semester = Subject::where('id', $get('../../subject_id'))->first()->semester;
+                                $students = StudentOfClass::whereIn('lrn', Classes::where('id', $get('../../class_id'))->first()->students)->where('school_year_id', SchoolYear::where('current', true)->first()->id)->get();
+                                return $students->pluck('lname', 'lrn')->map(function ($lname, $lrn) use ($students, $semester) {
                                     $student = $students->where('lrn', $lrn)->first();
+
                                     $fname = $student->fname;
                                     $mname = $student->mname;
                                     $fullName = $lname.', '.$fname . ' ' . $mname;
+
+                                    if($semester == 1){
+                                        if ($student && $student->sem_1_status == 1) {
+                                            return '(Dropped)'.' '.$fullName;
+                                        }    
+                                    } else{
+                                        if ($student && $student->sem_1_status == 2) {
+                                            return '(Dropped)'.' '.$fullName;
+                                        }
+                                    }
                                     
                                     return $fullName;
                                 });
@@ -141,7 +153,7 @@ class EClassRecordResource extends Resource
                                 if($get('2nd_quarter_grade')){
                                     $average = ($get('1st_quarter_grade') + $get('2nd_quarter_grade'))/2;
                                     $set('average', $average);
-                                    if($average > 75){
+                                    if($average > 74){
                                         $set('remarks', 'Passed');
                                     } else{
                                         $set('remarks', 'Failed');
@@ -189,6 +201,7 @@ class EClassRecordResource extends Resource
                             Select::make('remarks')
                             ->disabled()
                             ->columnSpan(1)
+                            ->placeholder('This field is auto-generated')
                             ->options([
                                 'Passed' => 'Passed',
                                 'Failed' => 'Failed',

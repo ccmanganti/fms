@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Student;
+use App\Models\StudentOfClass;
 use App\Models\Classes;
 use App\Models\SchoolYear;
 use App\Models\SubjectLoad;
@@ -38,7 +39,8 @@ class StudentTenExport implements ShouldAutoSize
     
     public function __construct($studentId)
     {
-        $this->studentId = Student::where('id', $studentId)->first()->lrn;
+        $this->studentId = StudentOfClass::where('id', $studentId)->where('school_year_id', SchoolYear::where('current', true)->first()->id)->first()->lrn;
+        // $this->studentId = StudentOfClass::where('id', $studentId)->first()->lrn;
         $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->whereJsonContains('students', $this->studentId)->first();
         $subjectSem1 = SubjectLoad::where('class_id', $class->id)->where('semester', 1)->get();
         $subjectSem2 = SubjectLoad::where('class_id', $class->id)->where('semester', 2)->get();
@@ -67,7 +69,8 @@ class StudentTenExport implements ShouldAutoSize
         
 
         $this->class = $class;
-        $this->studentInfo = Student::where('lrn', $this->studentId)->first();
+        $this->studentInfo = StudentOfClass::where('lrn', $this->studentId)->where('name', $this->class->name)->first();
+        // $this->studentInfo = StudentOfClass::where('lrn', $this->studentId)->first();
 
         $this->subjectSem1 = $subjectSem1;
         $this->subjectSem2 = $subjectSem2;

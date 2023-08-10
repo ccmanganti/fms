@@ -71,7 +71,9 @@ class ClassesResource extends Resource
                         }
                         
                     })
-                    ->default(SchoolYear::where('current', 1)->first()->id)
+                    ->default(function(){
+                        return SchoolYear::where('current', 1)->first()->id ?? null;
+                    })
                     ->options(SchoolYear::all()->pluck('sy', 'id')),
                 DatePicker::make('completion')->format('d/m/Y')->displayFormat('d/m/Y')
                     ->label("Date of Graduation/Completion")

@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Student;
+use App\Models\StudentOfClass;
 use App\Models\Classes;
 use App\Models\SchoolYear;
 use App\Models\User;
@@ -60,8 +61,9 @@ class StudentsExport implements FromCollection, ShouldAutoSize
 
     public function collection()
     {
-        return Student::whereIn('lrn', Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('id', $this->classId)->first()->students)
+        return StudentOfClass::whereIn('lrn', Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('id', $this->classId)->first()->students)
             ->whereIn('gender', ['M', 'F'])
+            ->where('name', $this->class->name)
             ->orderByRaw("FIELD(gender, 'M', 'F'), lname ASC")
             ->get();
     }

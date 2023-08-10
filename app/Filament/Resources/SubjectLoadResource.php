@@ -71,7 +71,9 @@ class SubjectLoadResource extends Resource
                     ->label('School Year')
                     ->required()
                     ->reactive()
-                    ->default(SchoolYear::where('current', 1)->first()->id)
+                    ->default(function(){
+                        return SchoolYear::where('current', 1)->first()->id ?? null;
+                    })
                     ->options(SchoolYear::all()->pluck('sy', 'id')),
                 Select::make('teacher_id')
                     ->label('Subject Teacher')
@@ -82,7 +84,7 @@ class SubjectLoadResource extends Resource
                     ->required()
                     ->reactive()
                     ->options(function (callable $get){
-                        $sy = SchoolYear::where('id',$get('school_year_id'))->first()->id;
+                        // $sy = SchoolYear::where('id',$get('school_year_id'))->first()->id;
                         return Classes::where('school_year_id', $get('school_year_id'))->pluck('name', 'id');
                     }),
                 Select::make('subject_id')

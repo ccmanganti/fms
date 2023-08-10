@@ -14,6 +14,8 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
+        'sem_1_status',
+        'sem_2_status',
         'lrn',
         'lname',
         'fname',
