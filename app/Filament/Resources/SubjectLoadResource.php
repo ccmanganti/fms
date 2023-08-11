@@ -155,9 +155,13 @@ class SubjectLoadResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Action::make(auth()->user()->hasRole('Superadmin') ? 'export_class_record' : 'export')
-                ->label("ECR.XLSX")
+                ->label("ECR.xlsx")
                 ->icon('heroicon-o-newspaper')
                 ->url(fn (SubjectLoad $record): string => ('/e-class-records/'.$record->id.'/export')),
+                Action::make(auth()->user()->hasRole('Superadmin') ? 'export_class_record-pdf' : 'export-pdf')
+                ->label("ECR.pdf")
+                ->icon('heroicon-o-newspaper')
+                ->url(fn (SubjectLoad $record): string => ('/e-class-records/'.$record->id.'/export-pdf')),
             ])
             ->bulkActions($bulkActions);
     }

@@ -267,9 +267,13 @@ class EClassRecordResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make()->label('Input Grades'),
                 Action::make(auth()->user()->hasRole('Superadmin') ? 'export_class_record' : 'export')
-                ->label("ECR.XLSX")
+                ->label("ECR.xlsx")
                 ->icon('heroicon-o-newspaper')
                 ->url(fn (SubjectLoad $record): string => ('/e-class-records/'.$record->id.'/export')),
+                Action::make(auth()->user()->hasRole('Superadmin') ? 'export_class_record-pdf' : 'export-pdf')
+                ->label("ECR.pdf")
+                ->icon('heroicon-o-newspaper')
+                ->url(fn (SubjectLoad $record): string => ('/e-class-records/'.$record->id.'/export-pdf')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -289,7 +293,6 @@ class EClassRecordResource extends Resource
             'index' => Pages\ListEClassRecords::route('/'),
             // 'create' => Pages\CreateEClassRecord::route('/create'),
             // 'edit' => Pages\EditEClassRecord::route('/{record}/edit'),
-            'export' => Pages\ExportEClass::route('/{record}/export'),
         ];
     }
     

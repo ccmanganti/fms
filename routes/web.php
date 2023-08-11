@@ -11,6 +11,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Response;
 use App\Models\Classes;
 use App\Models\Student;
+use App\Models\Subject;
+use App\Models\SubjectLoad;
 use App\Http\Controllers\Controller;
 use App\Jobs\GenerateSf9Job;
 
@@ -71,6 +73,17 @@ Route::get('/{studentid}/export-sf10-pdf', function ($studentId) {
     return $export->generatePdf();
 });
 
+Route::get('/e-class-records/{subid}/export', function ($subId) {
+    $subject = Subject::where('id', SubjectLoad::where('id', $subId)->first()->subject_id)->first()->subject_name;
+    $className = Classes::where('id', SubjectLoad::where('id', $subId)->first()->class_id)->first()->name;
+    $class = 'ECR'.' - '.$className.' | '.$subject;
+    dd($class);
+    $templatePath = public_path('ecr.xlsx');
+    $filename = $class.'.xlsx';
+
+    $export = new StudentOneExport($classId);
+    return $export->download($templatePath)->setContentDisposition('attachment', $filename);
+});
 
 // Your route definition
 // Route::get('/{studentid}/export-sf9', function ($studentId) {

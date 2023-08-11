@@ -297,7 +297,6 @@ class ClassesResource extends Resource
             'index' => Pages\ListClasses::route('/'),
             // 'create' => Pages\CreateClasses::route('/create'),
             // 'edit' => Pages\EditClasses::route('/{record}/edit'),
-            'class' => Pages\ClassesPage::route('/{classid}/class'),
         ];
     }
     
