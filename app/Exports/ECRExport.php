@@ -22,17 +22,16 @@ use PhpOffice\PhpSpreadsheet\Writer\Pdf\Tcpdfv6;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Protection;
 use GuzzleHttp\Client;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
-class StudentOneExport implements FromCollection, ShouldAutoSize
+class ECRExport implements FromCollection, ShouldAutoSize
 {
     /**
      * @return \Illuminate\Support\Collection
      */
 
-    protected $classId;
+    protected $subId;
 
-    public function __construct($classId)
+    public function __construct($subId)
     {
         $this->classId = $classId;
         $this->class = Classes::where('id', $this->classId)->first();
@@ -70,6 +69,34 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
             ->get();
     }
 
+    // /**
+    //  * @param mixed $student
+    //  * @return array
+    //  */
+    // public function map($student): array
+    // {
+    //     return [
+    //         $student->lrn,
+    //         $student->lname,
+    //         $student->fname,
+    //         $student->mname,
+    //         $student->gender,
+    //         $student->date_of_birth,
+    //         $student->religion,
+    //         $student->no_street_purok,
+    //         $student->barangay,
+    //         $student->municipality,
+    //         $student->province,
+    //         $student->father_name,
+    //         $student->mother_name,
+    //         $student->guardian,
+    //         $student->relationship,
+    //         $student->contact_number,
+    //         $student->modality,
+    //         $student->remarks,
+    //     ];
+    // }
+
     /**
      * Manually map the data to specific cells in the Excel template and insert new rows.
      *
@@ -97,27 +124,11 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
 
 
 
-        $previousGender = null;
-        $males = 0;
-        $females = 0;
-        foreach ($data as $index => $student) {
+
+
+        foreach ($data as $student) {
             // Insert new row and shift existing rows below
             $worksheet->insertNewRowBefore($row + 1, 1);
-
-            if ($previousGender === "M" && $student->gender === "F") {
-                $males = $index;
-                $females = count($data) - ($index);
-                $worksheet->mergeCells("A{$row}:B{$row}");
-                $worksheet->mergeCells("C{$row}:BJ{$row}");
-
-                $worksheet->setCellValue("A{$row}", $index);
-                $worksheet->setCellValue("C{$row}", "<=== TOTAL MALE");
-                $cellCount = $worksheet->getCell("A{$row}");
-                $cellLabel = $worksheet->getCell("C{$row}");
-                $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
-                $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-                $row++;
-            }
 
             $worksheet->mergeCells("A{$row}:B{$row}");
             $worksheet->mergeCells("C{$row}:G{$row}");
@@ -159,20 +170,6 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
             
 
             $row++;
-            $previousGender = $student->gender;
-
-            if ($index === count($data) - 1) {
-                $worksheet->mergeCells("A{$row}:B{$row}");
-                $worksheet->mergeCells("C{$row}:BJ{$row}");
-
-                $worksheet->setCellValue("A{$row}", $females);
-                $worksheet->setCellValue("C{$row}", "<=== TOTAL FEMALE");
-                $cellCount = $worksheet->getCell("A{$row}");
-                $cellLabel = $worksheet->getCell("C{$row}");
-                $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
-                $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-            }
-
         }
 
         return $spreadsheet;
