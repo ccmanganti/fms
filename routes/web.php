@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Exports\ECRSummaryExport;
 use App\Exports\StudentOneExport;
 use App\Exports\StudentTwoExport;
 use App\Exports\StudentNineExport;
@@ -77,11 +78,10 @@ Route::get('/e-class-records/{subid}/export', function ($subId) {
     $subject = Subject::where('id', SubjectLoad::where('id', $subId)->first()->subject_id)->first()->subject_name;
     $className = Classes::where('id', SubjectLoad::where('id', $subId)->first()->class_id)->first()->name;
     $class = 'ECR'.' - '.$className.' | '.$subject;
-    dd($class);
-    $templatePath = public_path('ecr.xlsx');
+    $templatePath = public_path('ecr-summary.xlsx');
     $filename = $class.'.xlsx';
 
-    $export = new StudentOneExport($classId);
+    $export = new ECRSummaryExport($subId);
     return $export->download($templatePath)->setContentDisposition('attachment', $filename);
 });
 

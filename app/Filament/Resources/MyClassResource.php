@@ -87,6 +87,7 @@ class MyClassResource extends Resource
                     Toggle::make('sem_1_status')
                     ->reactive()
                     ->label('Drop - 1st Semester')
+                    ->default(0)
                     ->afterStateUpdated(function (Closure $set, callable $get) {
                         if($get('sem_1_status') == true){
                             $set('sem_2_status', true);
@@ -97,6 +98,7 @@ class MyClassResource extends Resource
                     }),
                     Toggle::make('sem_2_status')
                     ->reactive()
+                    ->default(0)
                     ->label('Drop - 2nd Semester')
                     ->disabled(function (callable $get) {
                         if($get('sem_1_status') == true){
