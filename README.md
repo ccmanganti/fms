@@ -108,11 +108,8 @@ Composer: Install Composer, a dependency management tool for PHP, on your local 
 
 Laravel: Ensure you have Laravel installed globally on your system. Open a command-line interface (CLI) and run the following command:
 
-PDFtk: Install PDFtk on your system. Make sure to use its default configuration. It will be use for pdf-related development.
+PDFtk: Install PDFtk on your system. Make sure to use its default configuration. It will be use for pdf-related development. (https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
 
- ```sh
-    composer global require laravel/installer
-   ```
 
 ### Installation
 
