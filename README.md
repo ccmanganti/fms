@@ -142,7 +142,9 @@ Link the storage
 
 Database configuration:
 
-Create a .env file and copy the contents of .env.example. In the .env file, update the database connection settings according to your local environment. Set the database name, username, and password.
+1. Create a .env file and copy the contents of .env.example. 
+
+2. In the .env file, update the database connection settings according to your local environment. Set the database name, username, and password.
 
 Run database migrations:
 
@@ -151,6 +153,20 @@ Run database migrations:
    ```
 
 Seed the setup resources:
+
+```sh
+    php artisan db:seed
+    php artisan db:seed --class=PhilbrgySeeder --class=PhilmuniSeeder --class=PhilprovinceSeeder
+   ```
+
+Configure Filament:
+
+1. Copy the example files from the `example_files` folder to your project's directory.
+
+2. Replace the following files in your project with the example files from the `example_files` folder:
+
+- Replace `vendor/filament/filament/config/filament.php` with `example_files/filament.php.example`
+- Replace `vendor/filament/filament/resources/views/components/brand.blade.php` with `example_files/brand.blade.php.example`
 
 ```sh
     php artisan db:seed
