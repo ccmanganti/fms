@@ -1,0 +1,13 @@
+@if (filled($brand = config('filament.brand')))
+    <div @class([
+        'filament-brand text-xl font-bold tracking-tight',
+        'dark:text-white' => config('filament.dark_mode'),
+    ])>
+    @php
+        $basePath = request()->path();
+        $isRootDirectory = $basePath === '/';
+    @endphp
+    <img src="{{ asset('img/logo_header.png') }}" alt="Logo" style="width:@if($basePath == 'login' || $basePath == 'register' || $basePath == 'password/reset') 80px @else 40px @endif;">
+    
+    </div>
+@endif
