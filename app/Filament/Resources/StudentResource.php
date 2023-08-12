@@ -215,7 +215,7 @@ class StudentResource extends Resource
                 // TextColumn::make('lname')->label("Last Name")->searchable()->sortable()->toggleable(),
                 // TextColumn::make('fname')->label("First Name")->searchable()->sortable()->toggleable(),
                 // TextColumn::make('mname')->label("Middle Name")->searchable()->sortable()->toggleable(),
-                TextColumn::make('gender')->searchable()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('gender')->searchable()->sortable()->toggleable(),
             ])
             ->filters([
                 //

@@ -49,13 +49,13 @@ class ClassStudents extends BaseWidget
     protected function getTableColumns(): array
     {
         return [
-            TextColumn::make('lrn')->label("LRN")->searchable()->sortable()->toggleable(),
-            TextColumn::make('student_name')->label("Name")->searchable()->sortable()->toggleable()
+            TextColumn::make('lrn')->label("LRN")->searchable()->sortable(),
+            TextColumn::make('student_name')->label("Name")->searchable()->sortable()
             ->formatStateUsing(fn ($record) => $record->lname.', '.$record->fname.', '.$record->mname),
             // TextColumn::make('lname')->label("Last Name")->searchable()->sortable()->toggleable(),
             // TextColumn::make('fname')->label("First Name")->searchable()->sortable()->toggleable(),
             // TextColumn::make('mname')->label("Middle Name")->searchable()->sortable()->toggleable(),
-            TextColumn::make('gender')->searchable()->sortable()->toggleable(isToggledHiddenByDefault: true),
+            TextColumn::make('gender')->searchable()->sortable(),
         ];
     }
 
