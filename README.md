@@ -30,26 +30,143 @@
 
   <h3 align="center">Form Management System</h3>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  <p align="center">
+    <!--Description -->
+    <br />
+    <br />
+    <br />
+<!--     <a href="https://popdev.online">View Demo</a> -->
+    ·
+    <a href="https://github.com/ccmanganti/fms/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/ccmanganti/fms/issues">Request Feature</a>
+  </p>
+</div>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+<!-- <img src="./public/img/358646786_1027175638659287_6984588511889434154_n (1).png" alt="Logo" width="700"> -->
+
+
+Extensive Description here...
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+At this system's core are these technologies.
+
+- Laravel
+- Filament
+- MySQL
+- PDFtk
+- PhpSpreadsheet
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To set up your this Laravel project locally, follow these simple steps:
+
+### Prerequisites
+
+PHP: Make sure you have PHP installed on your machine. You can download the latest version of PHP from the official PHP website (https://www.php.net/) and follow the installation instructions for your specific operating system.
+
+Composer: Install Composer, a dependency management tool for PHP, on your local machine. You can download Composer from the official website (https://getcomposer.org/) and follow the installation instructions.
+
+Laravel: Ensure you have Laravel installed globally on your system. Open a command-line interface (CLI) and run the following command:
+
+PDFtk: Install PDFtk on your system. Make sure to use its default configuration. It will be use for pdf-related development.
+
+ ```sh
+    composer global require laravel/installer
+   ```
+
+### Installation
+
+Follow these steps to install and set up your Laravel project:
+Clone the repository:
+
+ ```sh
+    git clone https://github.com/ccmanganti/fms.git
+   ```
+
+Install dependencies:
+
+ ```sh
+    cd project-name
+    composer install
+   ```
+
+Set up the environment:
+```sh
+    php artisan key:generate
+   ```
+
+Link the storage
+```sh
+    php artisan link:storage
+   ```
+
+Database configuration:
+
+1. Create a .env file and copy the contents of .env.example. 
+
+2. In the .env file, update the database connection settings according to your local environment. Set the database name, username, and password.
+
+Run database migrations:
+
+```sh
+    php artisan migrate
+   ```
+
+Seed the setup resources:
+
+```sh
+    php artisan db:seed
+    php artisan db:seed --class=PhilbrgySeeder --class=PhilmuniSeeder --class=PhilprovinceSeeder
+   ```
+
+Configure Filament:
+
+1. Copy the example files from the `example_files` folder to your project's directory.
+
+2. Replace the following files in your project with the example files from the `example_files` folder:
+
+- Replace `vendor/filament/filament/config/filament.php` with `example_files/filament.php.example`
+- Replace `vendor/filament/filament/resources/views/components/brand.blade.php` with `example_files/brand.blade.php.example`
 
 ```sh
     php artisan db:seed
