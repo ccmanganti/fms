@@ -75,7 +75,7 @@
 <!-- <img src="./public/img/358646786_1027175638659287_6984588511889434154_n (1).png" alt="Logo" width="700"> -->
 
 
-Extensive Description
+Extensive Description here...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
