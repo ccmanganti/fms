@@ -49,7 +49,9 @@ class Student extends Model
                 // Update the existing record
                 
                 $existingStudent->lrn = $student->lrn;
-                $existingStudent->name = $student->name;
+                $existingStudent->lname = $student->lname;
+                $existingStudent->fname = $student->fname;
+                $existingStudent->mname = $student->mname;
                 $existingStudent->gender = $student->gender;
                 $existingStudent->date_of_birth = $student->date_of_birth;
                 $existingStudent->religion = $student->religion;
