@@ -227,7 +227,7 @@ class StudentResource extends Resource
                     ->icon('heroicon-o-newspaper')
                     ->label('SF9.XLSX')
                     ->hidden(function(){
-                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                        if((auth()->user()->hasRole('Subject Teacher') || auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal')) && !auth()->user()->hasRole('Adviser')){
                             return true;
                         }
                     })
@@ -236,7 +236,7 @@ class StudentResource extends Resource
                     ->icon('heroicon-o-printer')
                     ->label('SF9.PDF')
                     ->hidden(function(){
-                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                        if((auth()->user()->hasRole('Subject Teacher') || auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal')) && !auth()->user()->hasRole('Adviser')){
                             return true;
                         }
                     })
@@ -246,7 +246,7 @@ class StudentResource extends Resource
                     ->icon('heroicon-o-newspaper')
                     ->label('SF10.XLSX')
                     ->hidden(function(){
-                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                        if((auth()->user()->hasRole('Subject Teacher') || auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal')) && !auth()->user()->hasRole('Adviser')){
                             return true;
                         }
                     })
@@ -255,7 +255,7 @@ class StudentResource extends Resource
                     ->icon('heroicon-o-printer')
                     ->label('SF10.PDF')
                     ->hidden(function(){
-                        if(auth()->user()->hasRole('Subject Teacher') && !auth()->user()->hasRole('Adviser')){
+                        if((auth()->user()->hasRole('Subject Teacher') || auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal')) && !auth()->user()->hasRole('Adviser')){
                             return true;
                         }
                     })
