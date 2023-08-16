@@ -165,6 +165,8 @@ Configure Filament:
 - Replace `vendor/filament/filament/config/filament.php` with `example_files/filament.php.example`
 - Replace `vendor/filament/filament/resources/views/components/brand.blade.php` with `example_files/brand.blade.php.example`
 
+- Replace `vendor/filament/filament/dist` folder with `example_files/dist.example` folder
+
 ```sh
     php artisan db:seed
     php artisan db:seed --class=PhilbrgySeeder --class=PhilmuniSeeder --class=PhilprovinceSeeder
