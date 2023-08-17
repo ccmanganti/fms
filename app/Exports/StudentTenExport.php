@@ -77,7 +77,11 @@ class StudentTenExport implements ShouldAutoSize
 
         if($this->class->grade_level == "12"){
             $previousSY = SchoolYear::where('sydate', (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate)-1)->first();
-            $classExist = Classes::where('school_year_id', $previousSY->id)->first();
+            if($previousSY){
+                $classExist = Classes::where('school_year_id', $previousSY->id)->first();
+            } else{
+                $classExist = null;   
+            }
             
             if($classExist){
                 $previousClass = Classes::where('school_year_id', $previousSY->id)->whereJsonContains('students', $this->studentId)->first();

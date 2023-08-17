@@ -122,3 +122,11 @@ Route::get('/{studentid}/download-pdf', function ($studentId) {
 //     $export = new StudentTenExport($studentId);
 //     return $export->download($templatePath)->setContentDisposition('attachment', $filename);
 // });
+
+
+Route::get('/artisan/resetresources', function () {
+    Artisan::call('migrate:refresh --path=/database/migrations/2023_07_06_032729_create_classes_table.php');
+    Artisan::call('migrate:refresh --path=/database/migrations/2023_07_08_011001_create_subject_loads_table.php');
+    Artisan::call('migrate:refresh --path=/database/migrations/2023_07_13_041015_create_e_class_records_table.php');
+    Artisan::call('migrate:refresh --path=/database/migrations/2023_08_08_070539_create_student_of_classes_table.php');
+});

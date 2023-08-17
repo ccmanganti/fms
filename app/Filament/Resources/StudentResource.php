@@ -84,16 +84,20 @@ class StudentResource extends Resource
                 Section::make('I. Basic Student Information')->schema([
                     TextInput::make('lrn')
                         ->required()
+                        ->label('LRN')
                         ->numeric()
                         ->unique(ignorable: fn ($record) => $record),
                     TextInput::make('lname')
                         ->required()
+                        ->label('Last Name')
                         ->maxLength(255),
                     TextInput::make('fname')
                         ->required()
+                        ->label('First Name')
                         ->maxLength(255),
                     TextInput::make('mname')
                         ->required()
+                        ->label('Middle Name')
                         ->maxLength(255),
                     Select::make('gender')
                         ->required()
@@ -167,8 +171,10 @@ class StudentResource extends Resource
 
                 Section::make('III. Parental and Guardian Information')->schema([
                     TextInput::make('mother_name')
+                        ->label('Mother\'s Name')
                         ->maxLength(255),
                     TextInput::make('father_name')
+                        ->label('Father\'s Name')
                         ->maxLength(255),
                     TextInput::make('guardian')
                         ->maxLength(255),
