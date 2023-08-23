@@ -72,6 +72,7 @@ class Classes extends Model
                 ->where('name', $model->name)
                 ->delete();
             }
+            SubjectLoad::where('class_id',$model->getKey())->delete();
         });
 
         // static::updating(function ($model) {

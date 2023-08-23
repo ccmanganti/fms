@@ -34,21 +34,21 @@ class SubjectLoad extends Model
             $model->student_grades = $model->getFormattedStudentsAttribute();
         });
 
-        static::updating(function ($model) {
-            $previousRecord = $model->fresh();
+        // static::updating(function ($model) {
+        //     $previousRecord = $model->fresh();
     
-            if (
-                $model->school_year_id === $previousRecord->school_year_id &&
-                $model->class_id === $previousRecord->class_id &&
-                $model->subject_id === $previousRecord->subject_id &&
-                $model->semester === $previousRecord->semester
-            ) {
-                // The relevant fields are the same, so skip updating student_grades
-                return;
-            }
+        //     if (
+        //         $model->school_year_id === $previousRecord->school_year_id &&
+        //         $model->class_id === $previousRecord->class_id &&
+        //         $model->subject_id === $previousRecord->subject_id &&
+        //         $model->semester === $previousRecord->semester
+        //     ) {
+        //         // The relevant fields are the same, so skip updating student_grades
+        //         return;
+        //     }
     
-            $model->student_grades = $model->getFormattedStudentsAttribute();
-        });
+        //     $model->student_grades = $model->getFormattedStudentsAttribute();
+        // });
     }
 
 

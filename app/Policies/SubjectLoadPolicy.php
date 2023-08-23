@@ -37,7 +37,8 @@ class SubjectLoadPolicy
      */
     public function update(User $user, SubjectLoad $subjectLoad): bool
     {
-        return $user->hasRole(['Superadmin', 'Subject Teacher']);
+        return $user->hasRole(['Subject Teacher']);
+        // return false;
     }
 
     /**
