@@ -96,5 +96,12 @@ class ListStudents extends ListRecords
         return $this->getResource()::getUrl('index');
     }
 
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            StudentResource\Widgets\StudentArchiveOverview::class,
+        ];
+    }
+
 }
 

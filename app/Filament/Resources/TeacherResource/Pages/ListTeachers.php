@@ -16,4 +16,10 @@ class ListTeachers extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            TeacherResource\Widgets\TeacherOverview::class,
+        ];
+    }
 }

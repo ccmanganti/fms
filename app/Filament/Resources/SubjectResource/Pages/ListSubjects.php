@@ -16,4 +16,10 @@ class ListSubjects extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            SubjectResource\Widgets\SubjectOverview::class,
+        ];
+    }
 }
