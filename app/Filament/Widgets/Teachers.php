@@ -14,7 +14,7 @@ class Teachers extends BaseWidget
 
     public static function canView(): bool
     {
-        return auth()->user()->hasRole('Superadmin');
+        return auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal');
     }
 
     protected function getTableQuery(): Builder

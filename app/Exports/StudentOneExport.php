@@ -104,7 +104,7 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
             // Insert new row and shift existing rows below
             $worksheet->insertNewRowBefore($row + 1, 1);
 
-            if ($previousGender === "M" && $student->gender === "F") {
+            if (($previousGender === "M" && $student->gender === "F")) {
                 $males = $index;
                 $females = count($data) - ($index);
                 $worksheet->mergeCells("A{$row}:B{$row}");
@@ -162,15 +162,41 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
             $previousGender = $student->gender;
 
             if ($index === count($data) - 1) {
-                $worksheet->mergeCells("A{$row}:B{$row}");
-                $worksheet->mergeCells("C{$row}:BJ{$row}");
+                if($previousGender == 'M' && $index === count($data) - 1){
+                    $males = $index;
+                    $females = count($data) - ($index);
+                    $worksheet->mergeCells("A{$row}:B{$row}");
+                    $worksheet->mergeCells("C{$row}:BJ{$row}");
 
-                $worksheet->setCellValue("A{$row}", $females);
-                $worksheet->setCellValue("C{$row}", "<=== TOTAL FEMALE");
-                $cellCount = $worksheet->getCell("A{$row}");
-                $cellLabel = $worksheet->getCell("C{$row}");
-                $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
-                $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                    $worksheet->setCellValue("A{$row}", $index+1);
+                    $worksheet->setCellValue("C{$row}", "<=== TOTAL MALE");
+                    $cellCount = $worksheet->getCell("A{$row}");
+                    $cellLabel = $worksheet->getCell("C{$row}");
+                    $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                    $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                } else if($previousGender == 'F' && $index === count($data) - 1){
+                    $females = count($data) - ($index);
+                    $worksheet->mergeCells("A{$row}:B{$row}");
+                    $worksheet->mergeCells("C{$row}:BJ{$row}");
+    
+                    $worksheet->setCellValue("A{$row}", $females+1);
+                    $worksheet->setCellValue("C{$row}", "<=== TOTAL FEMALE");
+                    $cellCount = $worksheet->getCell("A{$row}");
+                    $cellLabel = $worksheet->getCell("C{$row}");
+                    $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                    $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                } else{
+                    $worksheet->mergeCells("A{$row}:B{$row}");
+                    $worksheet->mergeCells("C{$row}:BJ{$row}");
+    
+                    $worksheet->setCellValue("A{$row}", $females);
+                    $worksheet->setCellValue("C{$row}", "<=== TOTAL FEMALE");
+                    $cellCount = $worksheet->getCell("A{$row}");
+                    $cellLabel = $worksheet->getCell("C{$row}");
+                    $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                    $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                }
+
             }
 
         }
