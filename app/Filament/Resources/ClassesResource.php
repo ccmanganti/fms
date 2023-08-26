@@ -269,14 +269,14 @@ class ClassesResource extends Resource
                     ->icon('heroicon-o-newspaper')
                     ->label('SF1 - 2nd Sem.xlsx')
                     ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-second')),
-                    Action::make('export_sf1_first_pdf')
-                    ->icon('heroicon-o-newspaper')
-                    ->label('SF1 - 1st Sem.pdf')
-                    ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-first-pdf')),
-                    Action::make('export_sf1_second_pdf')
-                    ->icon('heroicon-o-newspaper')
-                    ->label('SF1 - 2nd Sem.pdf')
-                    ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-second-pdf')),
+                    // Action::make('export_sf1_first_pdf')
+                    // ->icon('heroicon-o-newspaper')
+                    // ->label('SF1 - 1st Sem.pdf')
+                    // ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-first-pdf')),
+                    // Action::make('export_sf1_second_pdf')
+                    // ->icon('heroicon-o-newspaper')
+                    // ->label('SF1 - 2nd Sem.pdf')
+                    // ->url(fn (Classes $record): string => ('/'.$record->id.'/export-sf1-second-pdf')),
                 ]),
                 
 

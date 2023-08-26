@@ -14,6 +14,8 @@ class SchoolYear extends Model
         'sy',
         'sydate',
         'current',
+        'principal',
+        'signature',
     ];
 
     public function handleSettingCurrentYear()

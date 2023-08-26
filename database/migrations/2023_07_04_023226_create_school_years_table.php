@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('sy')->nullable();
             $table->string('sydate');
             $table->string('current');
+            $table->string('principal');
+            $table->string('signature');
             $table->timestamps();
         });
     }

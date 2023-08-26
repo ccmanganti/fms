@@ -34,6 +34,7 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use App\Filament\Resources\SchoolYearResource\RelationManagers;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
 
 class SchoolYearResource extends Resource
 {
@@ -66,7 +67,12 @@ class SchoolYearResource extends Resource
                 ->required()
                 ->unique(ignorable: fn ($record) => $record)
                 ->disabled(),
+                TextInput::make('principal')
+                ->label("Principal's Name")
+                ->required()
+                ->columnSpan(2),
                 FileUpload::make('signature')
+                ->label("Principal's Signature")
                 ->image()
                 ->columnSpan(2),
                 Toggle::make('current')

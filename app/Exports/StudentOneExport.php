@@ -179,7 +179,7 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
                     $worksheet->mergeCells("A{$row}:B{$row}");
                     $worksheet->mergeCells("C{$row}:BJ{$row}");
     
-                    $worksheet->setCellValue("A{$row}", $females+1);
+                    $worksheet->setCellValue("A{$row}", $females);
                     $worksheet->setCellValue("C{$row}", "<=== TOTAL FEMALE");
                     $cellCount = $worksheet->getCell("A{$row}");
                     $cellLabel = $worksheet->getCell("C{$row}");
@@ -196,7 +196,6 @@ class StudentOneExport implements FromCollection, ShouldAutoSize
                     $cellCount->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
                     $cellLabel->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
                 }
-
             }
 
         }
