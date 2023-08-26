@@ -13,6 +13,9 @@ class MyClassOverview extends BaseWidget
 {
     protected function getCards(): array
     {
+        if(!SchoolYear::where('current', 1)->first()){
+            return [];
+        }
         return [
             Card::make('Total Students', Classes::where('adviser_id', auth()->user()->id)
             ->where('school_year_id', SchoolYear::where('current', 1)->first()->id)

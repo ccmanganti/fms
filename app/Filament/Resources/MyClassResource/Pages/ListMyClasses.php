@@ -18,8 +18,9 @@ class ListMyClasses extends ListRecords
 
     protected function getActions(): array
     {
+        
         // $actions[] = Actions\CreateAction::make();
-        $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('adviser_id', auth()->user()->id)->first();
+        $class = Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id ?? 0)->where('adviser_id', auth()->user()->id)->first();
         if($class){
             $actions[] = Actions\ActionGroup::make([
                 Action::make('export_sf1_first_xlsx')

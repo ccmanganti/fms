@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\DB;
 class SYOverview extends BaseWidget
 {
     protected function getCards(): array
-    {
+    {   
+        if(!SchoolYear::where('current', 1)->first()){
+            return [];
+        }
         if(auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal')){
             return [
                 Card::make('School Year', SchoolYear::where('current', 1)->first()->sy)

@@ -42,8 +42,10 @@ class ECRSummaryExport implements FromCollection, ShouldAutoSize
     }
 
     public function collection()
-    {
-        return StudentOfClass::whereIn('lrn', Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('id', $this->classId)->first()->students)
+    {   
+        // dd(Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->first()->students);
+        // dd(Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('id', $this->class->id)->first()->students);
+        return StudentOfClass::whereIn('lrn', Classes::where('school_year_id', SchoolYear::where('current', true)->first()->id)->where('id', $this->class->id)->first()->students)
             ->whereIn('gender', ['M', 'F'])
             ->where('name', $this->class->name)
             ->where(function ($query){

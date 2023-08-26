@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use App\Filament\Resources\SchoolYearResource\RelationManagers;
+use Filament\Forms\Components\FileUpload;
 
 class SchoolYearResource extends Resource
 {
@@ -65,11 +66,12 @@ class SchoolYearResource extends Resource
                 ->required()
                 ->unique(ignorable: fn ($record) => $record)
                 ->disabled(),
+                FileUpload::make('signature')
+                ->image()
+                ->columnSpan(2),
                 Toggle::make('current')
-                ->label('Current school year')
-                // ->default(function(callable $get){
-                //     return ('SY '.$get('sydate').' - '.$get('sydate')+1);
-                // })
+                ->columnSpan(2)
+                ->label('Current school year'),
             ]);
     }
 

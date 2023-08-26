@@ -12,6 +12,9 @@ class SchoolYearOverview extends BaseWidget
 {
     protected function getCards(): array
     {
+        if(!SchoolYear::where('current', 1)->first()){
+            return [];
+        }
         return [
             Card::make('School Year', SchoolYear::where('current', 1)->first()->sy)
             ->description('Registered as System Environment')
