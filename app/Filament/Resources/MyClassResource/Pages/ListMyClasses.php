@@ -47,4 +47,11 @@ class ListMyClasses extends ListRecords
 
         return $actions;
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            MyClassResource\Widgets\MyClassOverview::class,
+        ];
+    }
 }

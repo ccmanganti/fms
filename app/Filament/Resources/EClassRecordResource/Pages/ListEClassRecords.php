@@ -16,4 +16,11 @@ class ListEClassRecords extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            EClassRecordResource\Widgets\EClassOverview::class,
+        ];
+    }
 }

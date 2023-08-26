@@ -103,7 +103,6 @@ class EClassRecordResource extends Resource
                         $availableSubjects = Subject::whereNotIn('id', $existingSubjects)
                             ->pluck('subject_name', 'id');
                         $availableSubjects[Subject::where('id',$record->subject_id)->first()->id] = Subject::where('id',$record->subject_id)->first()->subject_name;
-                        
                         return $availableSubjects;    
                     }
                     $existingSubjects = SubjectLoad::where('class_id', $get('class_id'))->where('school_year_id', $get('school_year_id'))

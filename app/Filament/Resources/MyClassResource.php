@@ -83,34 +83,7 @@ class MyClassResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('I. Student Semestral Status')->schema([
-                    Toggle::make('sem_1_status')
-                    ->reactive()
-                    ->label('Drop - 1st Semester')
-                    ->default(0)
-                    ->afterStateUpdated(function (Closure $set, callable $get) {
-                        if($get('sem_1_status') == true){
-                            $set('sem_2_status', true);
-                        }
-                        else{
-                            $set('sem_2_status', false);
-                        }
-                    }),
-                    Toggle::make('sem_2_status')
-                    ->reactive()
-                    ->default(0)
-                    ->label('Drop - 2nd Semester')
-                    ->disabled(function (callable $get) {
-                        if($get('sem_1_status') == true){
-                            return true;
-                        }
-                        return false;
-                    })
-                ])
-                ->hidden(fn() => auth()->user()->hasRole("Superadmin"))
-                ->columns(2)
-                ->description("Set student's semestral status. If dropped on first semester, student will automatically be dropped on second semester."),
-                Section::make('II. Basic Student Information')->schema([
+                Section::make('I. Basic Student Information')->schema([
                     TextInput::make('lrn')
                         ->required()
                         ->numeric(),
@@ -166,7 +139,7 @@ class MyClassResource extends Resource
                 ])
                 ->columns(2),
                 
-                Section::make('III. Address')->schema([
+                Section::make('II. Address')->schema([
                     TextInput::make('no_street_purok')
                         ->maxLength(255),
                     Select::make('province')
@@ -193,7 +166,7 @@ class MyClassResource extends Resource
                     ->disabled(fn (Closure $get) => $get('municipality') == null),
                 ]),
 
-                Section::make('IV. Parental and Guardian Information')->schema([
+                Section::make('III. Parental and Guardian Information')->schema([
                     TextInput::make('mother_name')
                         ->maxLength(255),
                     TextInput::make('father_name')
@@ -211,7 +184,7 @@ class MyClassResource extends Resource
                         ]),
                 ])->columns(2),
 
-                Section::make('V. Additional Information')->schema([
+                Section::make('IV. Additional Information')->schema([
                     TextInput::make('contact_number'),
                     Select::make('modality')
                         ->options([
@@ -225,6 +198,33 @@ class MyClassResource extends Resource
                         ]),
                     TextInput::make('remarks'),
                     ]),
+                    Section::make('V. Student Semestral Status')->schema([
+                        Toggle::make('sem_1_status')
+                        ->reactive()
+                        ->label('Drop - 1st Semester')
+                        ->default(0)
+                        ->afterStateUpdated(function (Closure $set, callable $get) {
+                            if($get('sem_1_status') == true){
+                                $set('sem_2_status', true);
+                            }
+                            else{
+                                $set('sem_2_status', false);
+                            }
+                        }),
+                        Toggle::make('sem_2_status')
+                        ->reactive()
+                        ->default(0)
+                        ->label('Drop - 2nd Semester')
+                        ->disabled(function (callable $get) {
+                            if($get('sem_1_status') == true){
+                                return true;
+                            }
+                            return false;
+                        })
+                    ])
+                    ->hidden(fn() => auth()->user()->hasRole("Superadmin"))
+                    ->columns(2)
+                    ->description("Set student's semestral status. If dropped on first semester, student will automatically be dropped on second semester."),
                 
 
 

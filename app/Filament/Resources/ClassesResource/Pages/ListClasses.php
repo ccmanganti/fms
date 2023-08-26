@@ -17,4 +17,11 @@ class ListClasses extends ListRecords
         ];
     }
 
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            ClassesResource\Widgets\ClassesOverview::class,
+        ];
+    }
+
 }
