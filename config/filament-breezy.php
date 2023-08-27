@@ -7,7 +7,7 @@ return [
     |--------------------------------------------------------------------------
     | Whether or not to automatically register the My Profile page. Set this to false to extend and create your own page.
     */
-    "enable_profile_page" => false,
+    "enable_profile_page" => true,
     /*
     | Whether or not to automatically link the My Profile page in the user menu of Filament. NOTE: if enable_profile_page => false then this value is ignored and you'll need to register the item in your service provider manually.
     */
@@ -74,7 +74,7 @@ return [
     |--------------------------------------------------------------------------
     | Enable or disable registration.
     */
-    "enable_registration" => true,
+    "enable_registration" => false,
     /*
     |--------------------------------------------------------------------------
     | Path to registration Livewire component.
