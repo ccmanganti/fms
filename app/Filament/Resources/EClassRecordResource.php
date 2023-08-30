@@ -175,24 +175,31 @@ class EClassRecordResource extends Resource
                             ->numeric()
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $get) {
-                                $average = ((int)$get('1st_quarter_grade') + (int)$get('2nd_quarter_grade'))/2;
-                                $set('average', $average);
-                                if($average > 74){
-                                    $set('remarks', 'Passed');
+                                if($get('2nd_quarter_grade')){
+                                    $average = ((int)$get('1st_quarter_grade') + (int)$get('2nd_quarter_grade'))/2;
+                                    $set('average', $average);
+                                    if($average > 74){
+                                        $set('remarks', 'Passed');
+                                    } else{
+                                        $set('remarks', 'Failed');
+                                    }
+                                    if($average > 89){
+                                        $set('description', 'Outstanding');
+                                    } else if ($average > 84){
+                                        $set('description', 'Very Satisfactory');
+                                    } else if ($average > 79){
+                                        $set('description', 'Satisfactory');
+                                    } else if ($average > 74){
+                                        $set('description', 'Fairly Satisfactory');
+                                    } else{
+                                        $set('description', 'Did Not Meet Expectations');
+                                    }
                                 } else{
-                                    $set('remarks', 'Failed');
+                                    $set('average', null);
+                                    $set('remarks', null);
+                                    $set('description', null);
                                 }
-                                if($average > 89){
-                                    $set('description', 'Outstanding');
-                                } else if ($average > 84){
-                                    $set('description', 'Very Satisfactory');
-                                } else if ($average > 79){
-                                    $set('description', 'Satisfactory');
-                                } else if ($average > 74){
-                                    $set('description', 'Fairly Satisfactory');
-                                } else{
-                                    $set('description', 'Did Not Meet Expectations');
-                                }
+                                
                             }),
                             TextInput::make('average')
                             ->reactive()

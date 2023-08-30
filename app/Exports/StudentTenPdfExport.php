@@ -74,7 +74,11 @@ class StudentTenPdfExport implements ShouldAutoSize
 
         if($this->class->grade_level == "12"){
             $previousSY = SchoolYear::where('sydate', (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate)-1)->first();
-            $classExist = Classes::where('school_year_id', $previousSY->id)->first();
+            if($previousSY){
+                $classExist = Classes::where('school_year_id', $previousSY->id)->first();
+            } else{
+                $classExist = null;
+            }
             
             if($classExist){
                 $previousClass = Classes::where('school_year_id', $previousSY->id)->whereJsonContains('students', $this->studentId)->first();
@@ -280,7 +284,12 @@ class StudentTenPdfExport implements ShouldAutoSize
             }
             if($averages != []){
                 $fieldMappings['GA1'] = array_sum($averages) / count($averages);
-                $fieldMappings['TA1'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                // $fieldMappings['TA1'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                if(array_sum($averages) / count($averages) == 0){
+                    $fieldMappings['TA1'] = "";
+                } else{
+                    $fieldMappings['TA1'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                }
             }
             
 
@@ -301,7 +310,12 @@ class StudentTenPdfExport implements ShouldAutoSize
 
             if($averages != []){
                 $fieldMappings['GA2'] = array_sum($averages) / count($averages);
-                $fieldMappings['TA2'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                // $fieldMappings['TA2'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                if(array_sum($averages) / count($averages) == 0){
+                    $fieldMappings['TA2'] = "";
+                } else{
+                    $fieldMappings['TA2'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                }
             }
 
             // Second Year First Sem
@@ -321,7 +335,12 @@ class StudentTenPdfExport implements ShouldAutoSize
 
             if($averages != []){
                 $fieldMappings['GA3'] = array_sum($averages) / count($averages);
-                $fieldMappings['TA3'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                // $fieldMappings['TA3'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                if(array_sum($averages) / count($averages) == 0){
+                    $fieldMappings['TA3'] = "";
+                } else{
+                    $fieldMappings['TA3'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                }
             }
 
 
@@ -342,7 +361,12 @@ class StudentTenPdfExport implements ShouldAutoSize
 
             if($averages != []){
                 $fieldMappings['GA4'] = array_sum($averages) / count($averages);
-                $fieldMappings['TA4'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                // $fieldMappings['TA4'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                if(array_sum($averages) / count($averages) == 0){
+                    $fieldMappings['TA4'] = "";
+                } else{
+                    $fieldMappings['TA4'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                }
             }
         } else{
             $averages = [];
@@ -359,7 +383,12 @@ class StudentTenPdfExport implements ShouldAutoSize
             }
             if($averages != []){
                 $fieldMappings['GA1'] = array_sum($averages) / count($averages);
-                $fieldMappings['TA1'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                if(array_sum($averages) / count($averages) == 0){
+                    $fieldMappings['TA1'] = "";
+                } else{
+                    $fieldMappings['TA1'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                }
+                
             }
             
 
@@ -380,7 +409,12 @@ class StudentTenPdfExport implements ShouldAutoSize
 
             if($averages != []){
                 $fieldMappings['GA2'] = array_sum($averages) / count($averages);
-                $fieldMappings['TA2'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                // $fieldMappings['TA2'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                if(array_sum($averages) / count($averages) == 0){
+                    $fieldMappings['TA2'] = "";
+                } else{
+                    $fieldMappings['TA2'] = (array_sum($averages) / count($averages)) > 74 ? "Passed" : "Failed";
+                }
             }
         }
         

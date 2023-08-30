@@ -14,6 +14,8 @@ use App\Models\Student;
 use App\Models\StudentOfClass;
 use App\Models\Role;
 use App\Models\Classes;
+use App\Models\Subject;
+use App\Models\SubjectLoad;
 use App\Models\Philprovince;
 use App\Models\Philmuni;
 use App\Models\Philbrgy;
@@ -237,16 +239,88 @@ class MyClassResource extends Resource
         if (auth()->user()->hasRole('Superadmin')) {
             $bulkActions[] = DeleteBulkAction::make();
         }
+        $currentSchoolYearId = SchoolYear::where('current', true)->value('id');
+        $class = Classes::where('adviser_id', auth()->user()->id)
+            ->where('school_year_id', $currentSchoolYearId)->first();
+        $textColumnArrays = [];
+        if($class){
+            $subjects = SubjectLoad::where('class_id', $class->id)->get();
 
+            $textColumnArrays[] = TextColumn::make('semester1')->label('SEMESTER')->toggleable()
+            ->color('primary')
+            ->formatStateUsing(function($record){
+                return '1st Semester';
+            });
+            foreach ($subjects as $subject) {
+                if(Subject::where('id', $subject->subject_id)->first()->semester == '1'){
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'name')->label('Subject Name')->toggleable()
+                    ->color('success')
+                    ->formatStateUsing(function($record) use ($subject){
+                        return Subject::where('id', $subject->subject_id)->first()->subject_name;
+                    });
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'1')->label('1st Quarter')->toggleable()
+                    ->formatStateUsing(function($record) use ($subject){
+                        $grade = collect($subject->student_grades)->where('name', $record->lrn)->first();
+                        return $grade['1st_quarter_grade'] ?? 'No Data';
+                    });
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'2')->label('2nd Quarter')->toggleable()
+                    ->formatStateUsing(function($record) use ($subject){
+                        $grade = collect($subject->student_grades)->where('name', $record->lrn)->first();
+                        return $grade['2nd_quarter_grade'] ?? 'No Data';
+                    });
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'3')->label('Average')->toggleable()
+                    ->formatStateUsing(function($record) use ($subject){
+                        $grade = collect($subject->student_grades)->where('name', $record->lrn)->first();
+                        return $grade['average'] ?? 'No Data';
+                    });
+                }
+            }
+            $textColumnArrays[] = TextColumn::make('semester2')->label('SEMESTER')->toggleable()
+            ->color('primary')
+            ->formatStateUsing(function($record){
+                return '2nd Semester';
+            });
+            foreach ($subjects as $subject) {
+                if(Subject::where('id', $subject->subject_id)->first()->semester == '2'){
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'name')->label('Subject Name')->toggleable()
+                    ->color('success')
+                    ->formatStateUsing(function($record) use ($subject){
+                        return Subject::where('id', $subject->subject_id)->first()->subject_name;
+                    });
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'1')->label('1st Quarter')->toggleable()
+                    ->formatStateUsing(function($record) use ($subject){
+                        $grade = collect($subject->student_grades)->where('name', $record->lrn)->first();
+                        return $grade['1st_quarter_grade'] ?? 'No Data';
+                    });
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'2')->label('2nd Quarter')->toggleable()
+                    ->formatStateUsing(function($record) use ($subject){
+                        $grade = collect($subject->student_grades)->where('name', $record->lrn)->first();
+                        return $grade['2nd_quarter_grade'] ?? 'No Data';
+                    });
+                    $textColumnArrays[] = TextColumn::make($subject->subject_id.'3')->label('Average')->toggleable()
+                    ->formatStateUsing(function($record) use ($subject){
+                        $grade = collect($subject->student_grades)->where('name', $record->lrn)->first();
+                        return $grade['average'] ?? 'No Data';
+                    });
+                }
+            }
+        }
+        
+        
+        
         return $table
             ->columns([
                 TextColumn::make('lrn')->label("LRN")->searchable()->sortable()->toggleable(),
                 TextColumn::make('student_name')->label("Name")->searchable()->sortable()->toggleable()
+                ->icon('heroicon-s-user')
                 ->formatStateUsing(fn ($record) => $record->lname.', '.$record->fname.', '.$record->mname),
-                // TextColumn::make('lname')->label("Last Name")->searchable()->sortable()->toggleable(),
-                // TextColumn::make('fname')->label("First Name")->searchable()->sortable()->toggleable(),
-                // TextColumn::make('mname')->label("Middle Name")->searchable()->sortable()->toggleable(),
                 TextColumn::make('gender')->searchable()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                ...$textColumnArrays,
+                TextColumn::make('REMARKS')->toggleable()
+                ->formatStateUsing(function($record){
+                    
+                }),
+
             ])
             ->filters([
                 //
