@@ -622,6 +622,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_3_1')
                                         ->label('Work 3')
@@ -631,6 +836,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('written_work_4_1')
@@ -642,6 +1052,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_5_1')
                                         ->label('Work 5')
@@ -651,6 +1266,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('written_work_6_1')
@@ -662,6 +1482,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_7_1')
                                         ->label('Work 7')
@@ -671,6 +1696,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('written_work_8_1')
@@ -682,6 +1912,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_9_1')
                                         ->label('Work 9')
@@ -692,6 +2127,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_10_1')
                                         ->label('Work 10')
@@ -701,6 +2341,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                     ])
@@ -715,6 +2560,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_2_1')
                                         ->label('Task 2')
@@ -724,6 +2774,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_3_1')
@@ -735,6 +2990,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_4_1')
                                         ->label('Task 4')
@@ -744,6 +3204,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_5_1')
@@ -755,6 +3420,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_6_1')
                                         ->label('Task 6')
@@ -764,6 +3634,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_7_1')
@@ -775,6 +3850,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_8_1')
                                         ->label('Task 8')
@@ -784,6 +4064,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_9_1')
@@ -795,6 +4280,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_10_1')
                                         ->label('Task 10')
@@ -804,6 +4494,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                     ])
@@ -816,6 +4711,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                     
@@ -833,6 +4933,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         
                                         ->reactive(),
                                         TextInput::make('written_work_2_2')
@@ -844,6 +5149,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_3_2')
                                         ->label('Work 3')
@@ -853,6 +5363,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('written_work_4_2')
@@ -864,6 +5579,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_5_2')
                                         ->label('Work 5')
@@ -873,6 +5793,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('written_work_6_2')
@@ -884,6 +6009,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_7_2')
                                         ->label('Work 7')
@@ -893,6 +6223,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('written_work_8_2')
@@ -904,6 +6439,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_9_2')
                                         ->label('Work 9')
@@ -914,6 +6654,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('written_work_10_2')
                                         ->label('Work 10')
@@ -923,6 +6868,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                     ])
@@ -937,6 +7087,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_2_2')
                                         ->label('Task 2')
@@ -946,6 +7301,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_3_2')
@@ -957,6 +7517,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_4_2')
                                         ->label('Task 4')
@@ -966,6 +7731,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_5_2')
@@ -977,6 +7947,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_6_2')
                                         ->label('Task 6')
@@ -986,6 +8161,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_7_2')
@@ -997,6 +8377,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_8_2')
                                         ->label('Task 8')
@@ -1006,6 +8591,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                         TextInput::make('performance_task_9_2')
@@ -1017,6 +8807,211 @@ class EClassRecordResource extends Resource
                                             }
                                             return true;
                                         })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
                                         ->reactive(),
                                         TextInput::make('performance_task_10_2')
                                         ->label('Task 10')
@@ -1026,6 +9021,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                     ])
@@ -1038,6 +9238,211 @@ class EClassRecordResource extends Resource
                                                 return false;
                                             }
                                             return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
                                         })
                                         ->reactive(),
                                     
