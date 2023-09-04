@@ -112,7 +112,257 @@ class EClassRecordResource extends Resource
                         ->pluck('subject_name', 'id');
                     return $availableSubjects;
                 }),
-                Section::make('Student Grades')->schema([
+                Section::make('Grading Percentages')->schema([
+                    TextInput::make('written')
+                        ->numeric()
+                        ->afterStateUpdated(function (Closure $set, $get){
+                            $write = $get('written');
+                            $perf = $get('performance');
+                            $quart = $get('quarterly');
+                            if($write && $perf && $quart){
+                                $total = $write+$perf+$quart;
+                                $set('total_percentage', $total);
+                            }
+                        })
+                        ->label("Written Works Percentage")
+                        ->reactive(),
+                    TextInput::make('performance')
+                        ->numeric()
+                        ->label("Performance Percentage")
+                        ->afterStateUpdated(function (Closure $set, $get){
+                            $write = $get('written');
+                            $perf = $get('performance');
+                            $quart = $get('quarterly');
+                            if($write && $perf && $quart){
+                                $total = $write+$perf+$quart;
+                                $set('total_percentage', $total);
+                            }
+                        })
+                        ->reactive(),
+                    TextInput::make('quarterly')
+                        ->numeric()
+                        ->label("Quarterly Assessment")
+                        ->afterStateUpdated(function (Closure $set, $get){
+                            $write = $get('written');
+                            $perf = $get('performance');
+                            $quart = $get('quarterly');
+                            if($write && $perf && $quart){
+                                $total = $write+$perf+$quart;
+                                $set('total_percentage', $total);
+                            }
+                        })
+                        ->reactive(),
+                    TextInput::make('total_percentage')
+                        ->numeric()
+                        ->disabled()
+                        ->minValue(100)
+                        ->maxValue(100)
+                        ->label("Total")
+                        ->reactive(),
+                ])
+                ->description("Register your subject's grading system.")
+                ->columns(4)->collapsed(),
+                Section::make('Score Totals')->schema([
+                    Section::make('1st Quarter')->schema([
+                        Section::make('Written Works')->schema([
+                            TextInput::make('total_written_work_1_1')
+                            ->label('Work 1')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_2_1')
+                            ->label('Work 2')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_3_1')
+                            ->label('Work 3')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_4_1')
+                            ->label('Work 4')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_5_1')
+                            ->label('Work 5')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_6_1')
+                            ->label('Work 6')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_7_1')
+                            ->label('Work 7')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_8_1')
+                            ->label('Work 8')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_9_1')
+                            ->label('Work 9')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_10_1')
+                            ->label('Work 10')
+                            ->numeric()
+                            ->reactive(),
+                        ])
+                        ->columns(5),
+                        Section::make('Performance Tasks')->schema([
+                            TextInput::make('total_performance_task_1_1')
+                            ->label('Task 1')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_2_1')
+                            ->label('Task 2')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_3_1')
+                            ->label('Task 3')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_4_1')
+                            ->label('Task 4')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_5_1')
+                            ->label('Task 5')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_6_1')
+                            ->label('Task 6')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_7_1')
+                            ->label('Task 7')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_8_1')
+                            ->label('Task 8')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_9_1')
+                            ->label('Task 9')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_10_1')
+                            ->label('Task 10')
+                            ->numeric()
+                            ->reactive(),
+                        ])
+                        ->columns(5),
+                        TextInput::make('total_quarterly_exam_1')
+                            ->label('Quarterly Exam 1 Total')
+                            ->numeric()
+                            ->reactive(),
+                        
+                    ])
+                    ->disabled(function(Closure $get){
+                        if($get('total_percentage') != 100){
+                            return true;
+                        }
+                        return false;
+                    })
+                    ->columnSpan(4)
+                    ->collapsed(),
+                    Section::make('2nd Quarter')->schema([
+                        Section::make('Written Works')->schema([
+                            TextInput::make('total_written_work_1_2')
+                            ->label('Work 1')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_2_2')
+                            ->label('Work 2')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_3_2')
+                            ->label('Work 3')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_4_2')
+                            ->label('Work 4')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_5_2')
+                            ->label('Work 5')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_6_2')
+                            ->label('Work 6')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_7_2')
+                            ->label('Work 7')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_8_2')
+                            ->label('Work 8')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_9_2')
+                            ->label('Work 9')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_written_work_10_2')
+                            ->label('Work 10')
+                            ->numeric()
+                            ->reactive(),
+                        ])
+                        ->columns(5),
+                        Section::make('Performance Tasks')->schema([
+                            TextInput::make('total_performance_task_1_2')
+                            ->label('Task 1')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_2_2')
+                            ->label('Task 2')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_3_2')
+                            ->label('Task 3')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_4_2')
+                            ->label('Task 4')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_5_2')
+                            ->label('Task 5')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_6_2')
+                            ->label('Task 6')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_7_2')
+                            ->label('Task 7')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_8_2')
+                            ->label('Task 8')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_9_2')
+                            ->label('Task 9')
+                            ->numeric()
+                            ->reactive(),
+                            TextInput::make('total_performance_task_10_2')
+                            ->label('Task 10')
+                            ->numeric()
+                            ->reactive(),
+                        ])
+                        ->columns(5),
+                        TextInput::make('total_quarterly_exam_2')
+                            ->label('Quarterly Exam 2 Total')
+                            ->numeric()
+                            ->reactive(),
+                        
+                    ])
+                    ->columnSpan(4)
+                    ->collapsed(),
+                ])
+                ->description("Register written works, performance tasks, and quarterly assessment score totals here.")
+                ->columns(4)->collapsed(),
+
                     Repeater::make('student_grades')
                         ->schema([
                             Select::make('name')
@@ -145,90 +395,988 @@ class EClassRecordResource extends Resource
                                     return $fullName;
                                 });
                             }),
-                            TextInput::make('1st_quarter_grade')
-                            ->numeric()
-                            ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $get) {
-                                if($get('2nd_quarter_grade')){
-                                    $average = ($get('1st_quarter_grade') + $get('2nd_quarter_grade'))/2;
-                                    $set('average', $average);
-                                    if($average > 74){
-                                        $set('remarks', 'Passed');
-                                    } else{
-                                        $set('remarks', 'Failed');
-                                    }
-                                    if($average > 89){
-                                        $set('description', 'Outstanding');
-                                    } else if ($average > 84){
-                                        $set('description', 'Very Satisfactory');
-                                    } else if ($average > 79){
-                                        $set('description', 'Satisfactory');
-                                    } else if ($average > 74){
-                                        $set('description', 'Fairly Satisfactory');
-                                    } else{
-                                        $set('description', 'Did Not Meet Expectations');
-                                    }
-                                }
-                                
-                            }),
-                            TextInput::make('2nd_quarter_grade')
-                            ->numeric()
-                            ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $get) {
-                                if($get('2nd_quarter_grade')){
-                                    $average = ((int)$get('1st_quarter_grade') + (int)$get('2nd_quarter_grade'))/2;
-                                    $set('average', $average);
-                                    if($average > 74){
-                                        $set('remarks', 'Passed');
-                                    } else{
-                                        $set('remarks', 'Failed');
-                                    }
-                                    if($average > 89){
-                                        $set('description', 'Outstanding');
-                                    } else if ($average > 84){
-                                        $set('description', 'Very Satisfactory');
-                                    } else if ($average > 79){
-                                        $set('description', 'Satisfactory');
-                                    } else if ($average > 74){
-                                        $set('description', 'Fairly Satisfactory');
-                                    } else{
-                                        $set('description', 'Did Not Meet Expectations');
-                                    }
-                                } else{
-                                    $set('average', null);
-                                    $set('remarks', null);
-                                    $set('description', null);
-                                }
-                                
-                            }),
-                            TextInput::make('average')
-                            ->reactive()
-                            ->disabled(),
-                            Select::make('remarks')
-                            ->disabled()
-                            ->columnSpan(1)
-                            ->placeholder('This field is auto-generated')
-                            ->options([
-                                'Passed' => 'Passed',
-                                'Failed' => 'Failed',
-                            ]),
-                            Select::make('description')
-                            ->disabled()
-                            ->columnSpan(2)
-                            ->options([
-                                'Outstanding' => 'Outstanding',
-                                'Very Satisfactory' => 'Very Satisfactory',
-                                'Satisfactory' => 'Satisfactory',
-                                'Fairly Satisfactory' => 'Fairly Satisfactory',
-                                'Did Not Meet Expectations' => 'Did Not Meet Expectations',
-                            ]),
+                            Section::make('Grades')->schema([
+                                Section::make('1st Quarter')->schema([
+                                    Section::make('Written Works')->schema([
+                                        TextInput::make('written_work_1_1')
+                                        ->label('Work 1')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_1_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
 
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
+                                        ->reactive(),
+                                        TextInput::make('written_work_2_1')
+                                        ->label('Work 2')
+                                        ->numeric()
+                                        ->afterStateUpdated(function(Closure $get, $set){
+                                            $written = $get('../../written');
+                                            $performance = $get('../../performance');
+                                            $quarterly = $get('../../quarterly');
+                                            
+                                            // FIRST QUARTER
+                                            $written_works_1 = array(
+                                                $get('written_work_1_1'),
+                                                $get('written_work_2_1'),
+                                                $get('written_work_3_1'),
+                                                $get('written_work_4_1'),
+                                                $get('written_work_5_1'),
+                                                $get('written_work_6_1'),
+                                                $get('written_work_7_1'),
+                                                $get('written_work_8_1'),
+                                                $get('written_work_9_1'),
+                                                $get('written_work_10_1')
+                                            );
+                                            $performance_tasks_1 = array(
+                                                $get('performance_task_1_1'),
+                                                $get('performance_task_2_1'),
+                                                $get('performance_task_3_1'),
+                                                $get('performance_task_4_1'),
+                                                $get('performance_task_5_1'),
+                                                $get('performance_task_6_1'),
+                                                $get('performance_task_7_1'),
+                                                $get('performance_task_8_1'),
+                                                $get('performance_task_9_1'),
+                                                $get('performance_task_10_1')
+                                            );
+                                            $total_written_works_1 = array(
+                                                $get('../../total_written_work_1_1'),
+                                                $get('../../total_written_work_2_1'),
+                                                $get('../../total_written_work_3_1'),
+                                                $get('../../total_written_work_4_1'),
+                                                $get('../../total_written_work_5_1'),
+                                                $get('../../total_written_work_6_1'),
+                                                $get('../../total_written_work_7_1'),
+                                                $get('../../total_written_work_8_1'),
+                                                $get('../../total_written_work_9_1'),
+                                                $get('../../total_written_work_10_1')
+                                            );
+                                            $total_performance_tasks_1 = array(
+                                                $get('../../total_performance_task_1_1'),
+                                                $get('../../total_performance_task_2_1'),
+                                                $get('../../total_performance_task_3_1'),
+                                                $get('../../total_performance_task_4_1'),
+                                                $get('../../total_performance_task_5_1'),
+                                                $get('../../total_performance_task_6_1'),
+                                                $get('../../total_performance_task_7_1'),
+                                                $get('../../total_performance_task_8_1'),
+                                                $get('../../total_performance_task_9_1'),
+                                                $get('../../total_performance_task_10_1')
+                                            );
+                                            $score_written_works_1_sum = array_sum(array_filter($total_written_works_1, 'is_numeric'));
+                                            $score_performance_tasks_1_sum = array_sum(array_filter($total_performance_tasks_1, 'is_numeric'));
+                                            $total_quarterly_exam_1 = $get('../../total_quarterly_exam_1');
+                                            $quarterly_exam_1 = $get('quarterly_exam_1');
+                                            // SECOND QUARTER
+                                            $written_works_2 = array(
+                                                $get('written_work_1_2'),
+                                                $get('written_work_2_2'),
+                                                $get('written_work_3_2'),
+                                                $get('written_work_4_2'),
+                                                $get('written_work_5_2'),
+                                                $get('written_work_6_2'),
+                                                $get('written_work_7_2'),
+                                                $get('written_work_8_2'),
+                                                $get('written_work_9_2'),
+                                                $get('written_work_10_2')
+                                            );
+                                            $performance_tasks_2 = array(
+                                                $get('performance_task_1_2'),
+                                                $get('performance_task_2_2'),
+                                                $get('performance_task_3_2'),
+                                                $get('performance_task_4_2'),
+                                                $get('performance_task_5_2'),
+                                                $get('performance_task_6_2'),
+                                                $get('performance_task_7_2'),
+                                                $get('performance_task_8_2'),
+                                                $get('performance_task_9_2'),
+                                                $get('performance_task_10_2')
+                                            );
+                                            $total_written_works_2 = array(
+                                                $get('../../total_written_work_1_2'),
+                                                $get('../../total_written_work_2_2'),
+                                                $get('../../total_written_work_3_2'),
+                                                $get('../../total_written_work_4_2'),
+                                                $get('../../total_written_work_5_2'),
+                                                $get('../../total_written_work_6_2'),
+                                                $get('../../total_written_work_7_2'),
+                                                $get('../../total_written_work_8_2'),
+                                                $get('../../total_written_work_9_2'),
+                                                $get('../../total_written_work_10_2')
+                                            );
+                                            $total_performance_tasks_2 = array(
+                                                $get('../../total_performance_task_1_2'),
+                                                $get('../../total_performance_task_2_2'),
+                                                $get('../../total_performance_task_3_2'),
+                                                $get('../../total_performance_task_4_2'),
+                                                $get('../../total_performance_task_5_2'),
+                                                $get('../../total_performance_task_6_2'),
+                                                $get('../../total_performance_task_7_2'),
+                                                $get('../../total_performance_task_8_2'),
+                                                $get('../../total_performance_task_9_2'),
+                                                $get('../../total_performance_task_10_2')
+                                            );
+                                            $score_written_works_2_sum = array_sum(array_filter($total_written_works_2, 'is_numeric'));
+                                            $score_performance_tasks_2_sum = array_sum(array_filter($total_performance_tasks_2, 'is_numeric'));
+                                            $total_quarterly_exam_2 = $get('../../total_quarterly_exam_2');
+                                            $quarterly_exam_1 = $get('quarterly_exam_2');
+
+                                            $total_written_works_1_sum = 0;
+                                            $total_written_works_2_sum = 0;
+                                            $total_performance_tasks_1_sum = 0;
+                                            $total_performance_tasks_2_sum = 0;
+
+
+
+                                            for ($i = 0; $i < count($written_works_1); $i++) {
+                                                if (!empty($total_written_works_1[$i]) && !empty($written_works_1[$i])) {
+                                                    $total_written_works_1_sum += $written_works_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($written_works_2); $i++) {
+                                                if (!empty($total_written_works_2[$i]) && !empty($written_works_2[$i])) {
+                                                    $total_written_works_2_sum += $written_works_2[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_1); $i++) {
+                                                if (!empty($total_performance_tasks_1[$i]) && !empty($performance_tasks_1[$i])) {
+                                                    $total_performance_tasks_1_sum += $performance_tasks_1[$i];
+                                                }
+                                            }
+                                            for ($i = 0; $i < count($performance_tasks_2); $i++) {
+                                                if (!empty($total_performance_tasks_2[$i]) && !empty($performance_tasks_2[$i])) {
+                                                    $total_performance_tasks_2_sum += $performance_tasks_2[$i];
+                                                }
+                                            }
+
+                                            if($total_written_works_1_sum != 0 && $score_written_works_1_sum != 0){
+                                                $resultWritten1 = ($total_written_works_1_sum / $score_written_works_1_sum) * $written;
+                                            } else{
+                                                $resultWritten1 = null;
+                                            }
+                                            if($total_written_works_2_sum != 0 && $score_written_works_2_sum != 0){
+                                                $resultWritten2 = ($total_written_works_2_sum / $score_written_works_2_sum) * $written;
+                                            } else{
+                                                $resultWritten2 = null;
+                                            }
+                                            if($total_performance_tasks_1_sum != 0 && $score_performance_tasks_1_sum != 0){
+                                                $resultPerformance1 = ($total_performance_tasks_1_sum / $score_performance_tasks_1_sum) * $performance;
+                                            } else{
+                                                $resultPerformance1 = null;
+                                            }
+                                            if($total_performance_tasks_2_sum != 0 && $score_performance_tasks_2_sum != 0){
+                                                $resultPerformance2 = ($total_performance_tasks_2_sum / $score_performance_tasks_2_sum) * $performance;
+                                            } else{
+                                                $resultPerformance2 = null;
+                                            }
+
+                                            if($get('quarterly_exam_1')){
+                                                $resultExam1 = ($get('quarterly_exam_1') / $get('../../total_quarterly_exam_1'))* $quarterly;
+                                            } else{
+                                                $resultExam1 = null;
+                                            }
+                                            if($get('quarterly_exam_2')){
+                                                $resultExam2 = ($get('quarterly_exam_2') / $get('../../total_quarterly_exam_2'))* $quarterly;
+                                            } else{
+                                                $resultExam2 = null;
+                                            }
+
+                                            $average_1 = null;
+                                            $average_2 = null;
+                                            if($resultWritten1 && $resultPerformance1 && $resultExam1){
+                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
+                                            }
+                                            if($resultWritten2 && $resultPerformance2 && $resultExam2){
+                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
+                                            }
+
+                                            if($average_1 && $average_2){
+                                                $average_grade = ($average_1+$average_2)/2;
+                                                $set('average', $average_grade);
+                                                if($average_grade > 74){
+                                                    $set('remarks', 'Passed');
+                                                } else{
+                                                    $set('remarks', 'Failed');
+                                                }
+                                                if($average_grade > 89){
+                                                    $set('description', 'Outstanding');
+                                                } else if ($average_grade > 84){
+                                                    $set('description', 'Very Satisfactory');
+                                                } else if ($average_grade > 79){
+                                                    $set('description', 'Satisfactory');
+                                                } else if ($average_grade > 74){
+                                                    $set('description', 'Fairly Satisfactory');
+                                                } else{
+                                                    $set('description', 'Did Not Meet Expectations');
+                                                }
+                                            }
+                                            
+                                        })
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_2_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        ->reactive(),
+                                        TextInput::make('written_work_3_1')
+                                        ->label('Work 3')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_3_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_4_1')
+                                        ->label('Work 4')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_4_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_5_1')
+                                        ->label('Work 5')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_5_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_6_1')
+                                        ->label('Work 6')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_6_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_7_1')
+                                        ->label('Work 7')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_7_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_8_1')
+                                        ->label('Work 8')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_8_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_9_1')
+                                        ->label('Work 9')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_9_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_10_1')
+                                        ->label('Work 10')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_10_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                    ])
+                                    ->columns(5),
+                                    Section::make('Performance Tasks')->schema([
+                                        TextInput::make('performance_task_1_1')
+                                        ->label('Task 1')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_1_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_2_1')
+                                        ->label('Task 2')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_2_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_3_1')
+                                        ->label('Task 3')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_3_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_4_1')
+                                        ->label('Task 4')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_4_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_5_1')
+                                        ->label('Task 5')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_5_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_6_1')
+                                        ->label('Task 6')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_6_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_7_1')
+                                        ->label('Task 7')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_7_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_8_1')
+                                        ->label('Task 8')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_8_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_9_1')
+                                        ->label('Task 9')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_9_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_10_1')
+                                        ->label('Task 10')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_10_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                    ])
+                                    ->columns(5),
+                                    TextInput::make('quarterly_exam_1')
+                                        ->label('Quarterly Exam 1 Score')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_quarterly_exam_1')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                    
+                                ])
+                                ->columnSpan(3)
+                                ->collapsed(),
+                                Section::make('2nd Quarter')->schema([
+                                    Section::make('Written Works')->schema([
+                                        TextInput::make('written_work_1_2')
+                                        ->label('Work 1')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_1_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_2_2')
+                                        ->label('Work 2')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_2_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_3_2')
+                                        ->label('Work 3')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_3_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_4_2')
+                                        ->label('Work 4')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_4_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_5_2')
+                                        ->label('Work 5')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_5_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_6_2')
+                                        ->label('Work 6')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_6_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_7_2')
+                                        ->label('Work 7')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_7_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_8_2')
+                                        ->label('Work 8')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_8_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_9_2')
+                                        ->label('Work 9')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_9_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('written_work_10_2')
+                                        ->label('Work 10')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_written_work_10_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                    ])
+                                    ->columns(5),
+                                    Section::make('Performance Tasks')->schema([
+                                        TextInput::make('performance_task_1_2')
+                                        ->label('Task 1')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_1_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_2_2')
+                                        ->label('Task 2')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_2_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_3_2')
+                                        ->label('Task 3')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_3_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_4_2')
+                                        ->label('Task 4')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_4_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_5_2')
+                                        ->label('Task 5')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_5_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_6_2')
+                                        ->label('Task 6')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_6_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_7_2')
+                                        ->label('Task 7')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_7_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_8_2')
+                                        ->label('Task 8')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_8_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_9_2')
+                                        ->label('Task 9')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_9_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                        TextInput::make('performance_task_10_2')
+                                        ->label('Task 10')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_performance_task_10_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                    ])
+                                    ->columns(5),
+                                    TextInput::make('quarterly_exam_2')
+                                        ->label('Quarterly Exam 2 Score')
+                                        ->numeric()
+                                        ->disabled(function(Closure $set, $get){
+                                            if($get('../../total_quarterly_exam_2')){
+                                                return false;
+                                            }
+                                            return true;
+                                        })
+                                        
+                                        ->reactive(),
+                                    
+                                ])
+                                ->columnSpan(3)
+                                ->collapsed(),
+                                
+                                   
+                                TextInput::make('1st_quarter_grade')
+                                ->numeric()
+                                ->reactive()
+                                ->afterStateUpdated(function (Closure $set, $get) {
+                                    if($get('2nd_quarter_grade')){
+                                        $average = ($get('1st_quarter_grade') + $get('2nd_quarter_grade'))/2;
+                                        $set('average', $average);
+                                        if($average > 74){
+                                            $set('remarks', 'Passed');
+                                        } else{
+                                            $set('remarks', 'Failed');
+                                        }
+                                        if($average > 89){
+                                            $set('description', 'Outstanding');
+                                        } else if ($average > 84){
+                                            $set('description', 'Very Satisfactory');
+                                        } else if ($average > 79){
+                                            $set('description', 'Satisfactory');
+                                        } else if ($average > 74){
+                                            $set('description', 'Fairly Satisfactory');
+                                        } else{
+                                            $set('description', 'Did Not Meet Expectations');
+                                        }
+                                    }
+                                    
+                                }),
+                                TextInput::make('2nd_quarter_grade')
+                                ->numeric()
+                                ->reactive()
+                                ->afterStateUpdated(function (Closure $set, $get) {
+                                    if($get('2nd_quarter_grade')){
+                                        $average = ((int)$get('1st_quarter_grade') + (int)$get('2nd_quarter_grade'))/2;
+                                        $set('average', $average);
+                                        if($average > 74){
+                                            $set('remarks', 'Passed');
+                                        } else{
+                                            $set('remarks', 'Failed');
+                                        }
+                                        if($average > 89){
+                                            $set('description', 'Outstanding');
+                                        } else if ($average > 84){
+                                            $set('description', 'Very Satisfactory');
+                                        } else if ($average > 79){
+                                            $set('description', 'Satisfactory');
+                                        } else if ($average > 74){
+                                            $set('description', 'Fairly Satisfactory');
+                                        } else{
+                                            $set('description', 'Did Not Meet Expectations');
+                                        }
+                                    } else{
+                                        $set('average', null);
+                                        $set('remarks', null);
+                                        $set('description', null);
+                                    }
+                                    
+                                }),
+                                TextInput::make('average')
+                                ->reactive()
+                                ->disabled(),
+                                Select::make('remarks')
+                                ->disabled()
+                                ->columnSpan(1)
+                                ->placeholder('This field is auto-generated')
+                                ->options([
+                                    'Passed' => 'Passed',
+                                    'Failed' => 'Failed',
+                                ]),
+                                Select::make('description')
+                                ->disabled()
+                                ->columnSpan(2)
+                                ->options([
+                                    'Outstanding' => 'Outstanding',
+                                    'Very Satisfactory' => 'Very Satisfactory',
+                                    'Satisfactory' => 'Satisfactory',
+                                    'Fairly Satisfactory' => 'Fairly Satisfactory',
+                                    'Did Not Meet Expectations' => 'Did Not Meet Expectations',
+                                ]),
+                            ])
+                            ->collapsed(),
+
+                            
                         ])
                         ->disableItemCreation()
                         ->disableItemDeletion()
                         ->columns(3)
                         ->columnSpan(2)
-                ])->collapsed()
             ]);
     }
 
@@ -298,7 +1446,7 @@ class EClassRecordResource extends Resource
         return [
             'index' => Pages\ListEClassRecords::route('/'),
             // 'create' => Pages\CreateEClassRecord::route('/create'),
-            // 'edit' => Pages\EditEClassRecord::route('/{record}/edit'),
+            'edit' => Pages\EditEClassRecord::route('/{record}/edit'),
         ];
     }
     
