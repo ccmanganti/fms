@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use App\Filament\Resources\ClassesResource\RelationManagers;
+use Illuminate\Support\Facades\DB;
 
 
 class ClassesResource extends Resource
@@ -199,18 +200,59 @@ class ClassesResource extends Resource
                         ->multiple()
                         ->options(Subject::all()->pluck('subject_name', 'id'))
                 ]),
+                // Section::make('Class Students')->schema([
+                //     Select::make('students')
+                //         ->searchable()
+                //         ->multiple()
+                //         ->options(Student::orderBy('lname', 'asc')->get()->map(function ($student) {
+                //             // Modify the 'lname' data here
+                //             $student['lname'] = $student['lname'].', '.$student['fname'].' '.$student['mname'];
+                    
+                //             return $student;
+                //         })
+                //         ->pluck('lname', 'lrn'))
+                // ]),
                 Section::make('Class Students')->schema([
                     Select::make('students')
                         ->searchable()
                         ->multiple()
-                        ->options(Student::orderBy('lname', 'asc')->get()->map(function ($student) {
-                            // Modify the 'lname' data here
-                            $student['lname'] = $student['lname'].', '.$student['fname'].' '.$student['mname'];
-                    
-                            return $student;
+                        ->options(function () {
+                            // Get the JSON string containing LRNs and decode it into an array
+                            $studentsInClassesJson = DB::table('classes')->where('school_year_id', SchoolYear::where('current', 1)->first()->id)->pluck('students')->first();
+                            $studentsInClasses = json_decode($studentsInClassesJson);
+                
+                            // Check if $studentsInClasses is empty or null
+                            if (empty($studentsInClasses)) {
+                                // If it's empty or null, return all students
+                                return Student::orderBy('lname', 'asc')
+                                    ->get()
+                                    ->map(function ($student) {
+                                        // Modify the 'lname' data here
+                                        $student['lname'] = $student['lname'] . ', ' . $student['fname'] . ' ' . $student['mname'];
+                
+                                        return $student;
+                                    })
+                                    ->pluck('lname', 'lrn');
+                            }
+                
+                            // Fetch students who are not in existing classes
+                            $studentsNotInClasses = Student::orderBy('lname', 'asc')
+                                ->whereNotIn('lrn', $studentsInClasses)
+                                ->get()
+                                ->map(function ($student) {
+                                    // Modify the 'lname' data here
+                                    $student['lname'] = $student['lname'] . ', ' . $student['fname'] . ' ' . $student['mname'];
+                
+                                    return $student;
+                                })
+                                ->pluck('lname', 'lrn');
+                
+                            return $studentsNotInClasses;
                         })
-                        ->pluck('lname', 'lrn'))
                 ]),
+                
+                
+                
                 
             ]);
     }

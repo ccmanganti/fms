@@ -110,7 +110,7 @@ class StudentNinePdfExport implements ShouldAutoSize
         $fieldMappings = [];
 
         // PERSONAL INFORMATION
-        $fieldMappings['Name'] = $this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname;
+        $fieldMappings['Name'] = strtoupper($this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname);
         $fieldMappings['Age'] = $this->studentInfo->age;
         $fieldMappings['Sex'] = $this->studentInfo->gender;
         $fieldMappings['Grade'] = $this->class->grade_level;

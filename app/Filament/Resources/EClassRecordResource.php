@@ -582,17 +582,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -797,17 +797,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -1012,17 +1012,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -1227,17 +1227,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -1442,17 +1442,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -1657,17 +1657,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -1872,17 +1872,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -2087,17 +2087,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -2302,17 +2302,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -2517,17 +2517,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -2735,17 +2735,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -2950,17 +2950,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -3165,17 +3165,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -3380,17 +3380,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -3595,17 +3595,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -3810,17 +3810,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -4025,17 +4025,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -4240,17 +4240,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -4455,17 +4455,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -4670,17 +4670,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -4887,17 +4887,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -5108,17 +5108,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -5324,17 +5324,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -5539,17 +5539,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -5754,17 +5754,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -5969,17 +5969,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -6184,17 +6184,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -6399,17 +6399,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -6614,17 +6614,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -6829,17 +6829,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -7044,17 +7044,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -7262,17 +7262,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -7477,17 +7477,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -7692,17 +7692,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -7907,17 +7907,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -8122,17 +8122,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -8337,17 +8337,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -8552,17 +8552,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -8767,17 +8767,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -8982,17 +8982,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -9197,17 +9197,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{
@@ -9414,17 +9414,17 @@ class EClassRecordResource extends Resource
                                             $average_1 = null;
                                             $average_2 = null;
                                             if($resultWritten1 && $resultPerformance1 && $resultExam1){
-                                                $set('1st_quarter_grade', $resultWritten1+$resultPerformance1+$resultExam1);
+                                                $set('1st_quarter_grade', ceil($resultWritten1+$resultPerformance1+$resultExam1));
                                                 $average_1 = $resultWritten1+$resultPerformance1+$resultExam1;
                                             }
                                             if($resultWritten2 && $resultPerformance2 && $resultExam2){
-                                                $set('2nd_quarter_grade', $resultWritten2+$resultPerformance2+$resultExam2);
+                                                $set('2nd_quarter_grade', ceil($resultWritten2+$resultPerformance2+$resultExam2));
                                                 $average_2 = $resultWritten2+$resultPerformance2+$resultExam2;
                                             }
 
                                             if($average_1 && $average_2){
                                                 $average_grade = ($average_1+$average_2)/2;
-                                                $set('average', $average_grade);
+                                                $set('average', ceil($average_grade));
                                                 if($average_grade > 74){
                                                     $set('remarks', 'Passed');
                                                 } else{

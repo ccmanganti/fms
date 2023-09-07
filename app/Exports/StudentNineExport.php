@@ -88,7 +88,7 @@ class StudentNineExport implements ShouldAutoSize
 
 
         // Details
-        $worksheetFront->setCellValue("Q10", $this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname);
+        $worksheetFront->setCellValue("Q10", strtoupper($this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname));
         $worksheetFront->setCellValue("U11", $this->studentInfo->gender);
         $worksheetFront->setCellValue("Q11", $this->studentInfo->age);
         $worksheetFront->setCellValue("Q12", $this->class->grade_level);
