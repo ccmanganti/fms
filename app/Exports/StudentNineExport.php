@@ -94,6 +94,8 @@ class StudentNineExport implements ShouldAutoSize
         $worksheetFront->setCellValue("Q12", $this->class->grade_level);
         $worksheetFront->setCellValue("V12", $this->class->section);
         $worksheetFront->setCellValue("R13", (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1));
+        $worksheetFront->setCellValue("O22", (SchoolYear::where('id', $this->class->school_year_id)->first()->principal));
+        $worksheetFront->setCellValue("O30", (SchoolYear::where('id', $this->class->school_year_id)->first()->principal));
         $worksheetFront->setCellValue("S14", $this->class->track_course);
         $worksheetFront->setCellValue("U13", strval($this->studentId));
         $worksheetFront->setCellValue("V21", User::where('id', $this->class->adviser_id)->first()->name);

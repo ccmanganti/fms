@@ -116,6 +116,7 @@ class StudentNinePdfExport implements ShouldAutoSize
         $fieldMappings['Grade'] = $this->class->grade_level;
         $fieldMappings['Section'] = $this->class->section;
         $fieldMappings['School Year'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->sydate).' - '.(SchoolYear::where('id', $this->class->school_year_id)->first()->sydate+1);
+        $fieldMappings['Principal'] = (SchoolYear::where('id', $this->class->school_year_id)->first()->principal);
         $fieldMappings['LRN'] = $this->studentInfo->lrn;
         $fieldMappings['TrackCourse'] = $this->course;
         $fieldMappings['Teacher'] = User::where('id', $this->class->adviser_id)->first()->name;
