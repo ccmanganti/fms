@@ -8,6 +8,7 @@ use App\Exports\StudentNineExport;
 use App\Exports\StudentTenExport;
 use App\Exports\StudentNinePdfExport;
 use App\Exports\StudentTenPdfExport;
+use App\Exports\StudentDiplomaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Response;
 use App\Models\Classes;
@@ -71,6 +72,11 @@ Route::get('/{studentid}/export-sf10', function ($studentId) {
 
 Route::get('/{studentid}/export-sf10-pdf', function ($studentId) {
     $export = new StudentTenPdfExport($studentId);
+    return $export->generatePdf();
+});
+
+Route::get('/{studentid}/export-diploma-pdf', function ($studentId) {
+    $export = new StudentDiplomaExport($studentId);
     return $export->generatePdf();
 });
 

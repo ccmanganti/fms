@@ -67,12 +67,32 @@ class SchoolYearResource extends Resource
                 ->required()
                 ->unique(ignorable: fn ($record) => $record)
                 ->disabled(),
+                DatePicker::make('completion')
+                ->label("Completion Date")
+                ->minDate(now()->subYears(2))
+                ->required()
+                ->reactive()
+                ->unique(ignorable: fn ($record) => $record)
+                ->columnSpan(2),
                 TextInput::make('principal')
                 ->label("Principal's Name")
-                ->required()
-                ->columnSpan(2),
+                ->required(),
+                Select::make('position')
+                ->label("Position")
+                ->options([
+                    'I' => 'Principal I',
+                    'II' => 'Principal II',
+                    'III' => 'Principal III',
+                    'IV' => 'Principal IV',
+                ]),
                 FileUpload::make('signature')
                 ->label("Principal's Signature")
+                ->image(),
+                TextInput::make('sds')
+                ->label("School Division Superintendent's Name")
+                ->required(),
+                FileUpload::make('signature_sds')
+                ->label("School Division Superintendent's Signature")
                 ->image()
                 ->columnSpan(2),
                 Toggle::make('current')

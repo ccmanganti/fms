@@ -15,9 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('sy')->nullable();
             $table->string('sydate');
+            $table->string('completion');
             $table->string('current');
             $table->string('principal');
-            $table->string('signature');
+            $table->string('position');
+            $table->string('signature')->nullable();
+            $table->string('sds');
+            $table->string('signature_sds')->nullable();
             $table->timestamps();
         });
     }

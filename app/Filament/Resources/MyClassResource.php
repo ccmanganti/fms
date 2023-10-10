@@ -366,6 +366,16 @@ class MyClassResource extends Resource
                     })
                     ->url(fn (StudentOfClass $record): string => ('/'.$record->id.'/export-sf10-pdf/'))
                     ->openUrlInNewTab(),
+                    Action::make('export_diploma')
+                    ->icon('heroicon-o-printer')
+                    ->label('Diploma')
+                    ->hidden(function(){
+                        if((auth()->user()->hasRole('Subject Teacher') || auth()->user()->hasRole('Superadmin') || auth()->user()->hasRole('Principal')) && !auth()->user()->hasRole('Adviser')){
+                            return true;
+                        }
+                    })
+                    ->url(fn (StudentOfClass $record): string => ('/'.$record->id.'/export-diploma-pdf/'))
+                    ->openUrlInNewTab(),
                 ]),
                 
             ])

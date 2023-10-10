@@ -13,9 +13,13 @@ class SchoolYear extends Model
     protected $fillable = [
         'sy',
         'sydate',
+        'completion',
         'current',
         'principal',
+        'position',
         'signature',
+        'sds',
+        'signature_sds',
     ];
 
     public function handleSettingCurrentYear()
