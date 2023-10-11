@@ -79,8 +79,8 @@ class StudentDiplomaExport implements ShouldAutoSize
     public function generatePdf()
     {
         // Load the PDF template
-        $pdf = new Pdf(public_path('\diploma.pdf'), [
-            'command' => 'C:\Program Files (x86)\PDFtk Server\bin\pdftk.exe',
+        $pdf = new Pdf(public_path('sf9-form.pdf'), [
+            'command' => '/usr/bin/pdftk',
             'useExec' => true,
         ]);
         
@@ -88,11 +88,11 @@ class StudentDiplomaExport implements ShouldAutoSize
 
         // dd($data);
 
-        $result = $pdf->fillForm($data)->flatten()->saveAs(public_path('\Diploma - '.$this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname.'.pdf'));
+        $result = $pdf->fillForm($data)->flatten()->saveAs(public_path('Diploma - '.$this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname.'.pdf'));
 
         // Send the file download response
         // return response()->download(public_path('\filled.pdf'), 'filled.pdf')->deleteFileAfterSend();
-        return response()->file(public_path('\Diploma - '.$this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname.'.pdf'), [
+        return response()->file(public_path('Diploma - '.$this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname.'.pdf'), [
             'Content-Disposition' => 'inline; filename="filled.pdf"'
         ])->deleteFileAfterSend();
     }
