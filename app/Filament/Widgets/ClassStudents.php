@@ -7,7 +7,7 @@ use Filament\Tables;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Student;
-use App\Models\StudentOFClass;
+use App\Models\StudentOfClass;
 use App\Models\Classes;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
