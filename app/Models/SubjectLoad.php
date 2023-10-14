@@ -12,7 +12,7 @@ class SubjectLoad extends Model
     use HasFactory;
 
     protected $fillable = [
-        // To be determined in Loads: Subject, Class
+        // To be determined in Loads: Subject, Classss
         'school_year_id',
         'teacher_id',
         'class_id',
