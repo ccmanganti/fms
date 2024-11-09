@@ -94,12 +94,11 @@ class StudentNinePdfExport implements ShouldAutoSize
         // dd($data);s
         
         $result = $pdf->fillForm($data)->flatten()->saveAs(public_path('\SF9 - '.$this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname.'.pdf'));
-
         // Send the file download response
         // return response()->download(public_path('\filled.pdf'), 'filled.pdf')->deleteFileAfterSend();
         return response()->file(public_path('\SF9 - '.$this->studentInfo->lname.', '.$this->studentInfo->fname.' '.$this->studentInfo->mname.'.pdf'), [
             'Content-Disposition' => 'inline; filename="filled.pdf"'
-        ])->deleteFileAfterSend();
+        ]);
     }
 
     // Rest of your class methods here...
